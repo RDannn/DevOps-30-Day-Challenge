@@ -1,5 +1,7 @@
 ![ncaagamehidrawio](https://github.com/user-attachments/assets/5a3f5c85-46a4-444d-a404-b6e8ae7b0918)
 
+#DevOpsAllStarChallenge
+
 
 ## **NCAA Game Highlights**
 
@@ -23,6 +25,10 @@ These are the building blocks for our project. Now, let’s dive into our first 
 ## Code Breakdown: 💻
 
 ### fetch.py 💻
+
+<img width="1434" alt="fetchpy" src="https://github.com/user-attachments/assets/4dbf7798-f6b6-4d29-94d4-9f433c6cf1bd" />
+
+
 
 Introduction
 
@@ -106,7 +112,11 @@ Error Resilience: Builds fault tolerance into workflows, ensuring smooth operati
 
 So now we get the data saved in an S3 bucket🪣 but its just in JSOn format? We need to process this into 1 video format! Let's now checout, process_one_video.py.
 
-process_one_video.py
+### process_one_video.py💻
+
+<img width="1429" alt="processone" src="https://github.com/user-attachments/assets/b4f8ad51-ea06-4fc5-90a9-0918c7541bce" />
+
+
 This script’s job is pretty straightforward:
 
 It grabs a file (JSON) from S3 that contains video URLs.
@@ -172,6 +182,9 @@ It’s all automated, and if something fails, it will let you know what went wro
 
 ### mediaconvert_process.py 💻
 
+<img width="1440" alt="mediaconvertpy" src="https://github.com/user-attachments/assets/b310620a-b289-4af4-a8ee-a2027ab4a190" />
+
+
 At the top, we import our library and set our constants. You will replace the placeholder bucket🪣 name with your unique bucket🪣 name. In the README file of this repository, you'll find the bash script needed to run the MediaConvert endpoint.
 
 Within the create_job function, we initialize our MediaConvert client using Boto3 and specify the MediaConvert endpoint for the correct AWS region. This is why we need the URL listed in the configuration!
@@ -193,6 +206,9 @@ Next code breakdown coming up!
 
 ### run_all.py 💻
 
+<img width="1440" alt="runallpy" src="https://github.com/user-attachments/assets/80cb9af6-7530-4eb5-b617-d13bf03afa4e" />
+
+
 This run_all.py script is the ultimate orchestrator—it brings together all the previous scripts we’ve worked on into a seamless pipeline! How cool is that? Code truly is powerful and fascinating! 😱🤯
 
 Now, let’s break down the magic happening here:
@@ -210,6 +226,9 @@ Here’s the catch: these scripts depend on each other. None of them can functio
 Lastly we will dive into our Dockerfile that brings everything together and executes.
 
 ### Dockerfile 💻 
+
+<img width="1357" alt="Dockerfile" src="https://github.com/user-attachments/assets/60b685bc-1d2c-4af2-bd5a-b4ef8403ceee" />
+
 
 This will build our entire container for us. First line, FROM PYTHON 3.9 slim. This tells Docker to use a lightweiht version of python 3.9 as the base for the container. This basically tells us lets set up a painting job pallete for our upcoming job. This our pyhton environment. We basically do not need to build this ourselves, it will be automatially built.
 
@@ -234,11 +253,17 @@ Before diving into the scripts, make sure you've got the following in place:
 Create a RapidAPI Account: 🏀
 You'll need a RapidAPI account to access highlight images and videos. For this example, we’re using NCAA (USA College Basketball) highlights, which are included for free in the basic plan. The Sports Highlights API is the endpoint we’ll be working with.
 
+<img width="1438" alt="rapidapi" src="https://github.com/user-attachments/assets/03f75523-917c-40bb-b9a7-db0ed514f7a4" />
+
+
 Verify Prerequisites are Installed: 🛠️
 Check that the following tools are installed on your system:
 Docker: Should be pre-installed in most regions. Run docker --version to verify.
 AWS CloudShell: Comes with the AWS CLI pre-installed. Verify by running aws --version.
 Python3: Make sure it's installed by running python3 --version.
+
+<img width="1268" alt="docker" src="https://github.com/user-attachments/assets/e2bb272f-91e9-4fc8-9eec-fed150cc3597" />
+
 
 Retrieve Your AWS Account ID ☁️🔑
 To get your AWS Account ID, log in to the AWS Management Console. Click on your account name in the top-right corner, and you’ll see your Account ID. Copy and save this ID somewhere secure because you’ll need it later when updating the code in the labs.
@@ -249,13 +274,23 @@ In the IAM dashboard, check under Users for your access keys. Click on your main
 Step 1: Creat IAM role/user👨🏾‍💻
 
 We create the IAM role/user that has the proper permsissions to execute the processes we need fo our project. They have just enough access to do things 
-they need to do. Do not need full administrator level access. Depending on your role for instance, at a job, you will need the proper permissions to excecute certain processes based on the permissions level of your role. Log into the AWS console, in the search box input IAM. Click on Roles, then Create role to create a new role. For the use case, Service or use case we will select S3. We will add this trust policy shortly. We need more to interact than just S3. Click next. Under  Add Permissions search for AmazonS3FullAccess, MediaConvertFullAccess and AmazonEC2ContainerRegistryFullAccess and click next. Under Role details enter "HighlightProcessorRole" as the name. This is specifically called and used in the script itself. Select Create Role. Find the role in the list and click on it .Under Trust relationships Edit the trust policy to this: Edit the Trust Policy and replace it with this: [View and Copy IAM Trust Policy](./iam-trust-policy.json)
+they need to do. Do not need full administrator level access. Depending on your role for instance, at a job, you will need the proper permissions to excecute certain processes based on the permissions level of your role. Log into the AWS console, in the search box input IAM. Click on Roles, then Create role to create a new role. For the use case, Service or use case we will select S3. We will add this trust policy shortly. We need more to interact than just S3. Click next. Under  Add Permissions search for AmazonS3FullAccess, MediaConvertFullAccess and AmazonEC2ContainerRegistryFullAccess and click next. Under Role details enter "HighlightProcessorRole" as the name. This is specifically called and used in the script itself. Select Create Role. Find the role in the list and click on it .Under Trust relationships Edit the trust policy to this: Edit the Trust Policy and replace it with this: **[IAMPolicies](resources/IAMPolicies)**:
+
+<img width="1439" alt="highlightrole" src="https://github.com/user-attachments/assets/52fc2bac-0ac1-4cc6-bc17-450d0458ef35" />
+
+
+
 
 Then click Update Policy. Let's now get into our Cloudshell Terminal for the nex steps! 
 
 Step 2: Create S3 Bucket🪣
 
 We will now need to create the S3 bucket🪣 and its contents. Open the Cloudshell Terminal. Input this code and ensure you make your bucket unique. 'aws s3api create-bucket --bucket rddrapids --region us-east-1'. To verify the bucket input command, 'aws s3 ls'. You should see your bucket listed. Let's continue now setting up the rest of this project! 
+
+<img width="1426" alt="s3api" src="https://github.com/user-attachments/assets/983d278a-fdf3-4520-879d-21298824a359" />
+
+<img width="1421" alt="s3apils" src="https://github.com/user-attachments/assets/d4ac8fcb-6567-47e3-9d71-d8430de08106" />
+
 
 Step 3: Create Local Folder and Clone Repository🗂️
 
@@ -268,6 +303,9 @@ Fire up your terminal and create a local folder to house your project. For examp
 Head to GitHub and create a repository if you haven’t already: [Create a New Repo](https://github.com/new).
 Clone your repository to your local machine. For example, my repo is named DevOps-30-Day-Challenge: git clone https://github.com/username-placeholder/DevOps-30-Day-Challenge.git
 After cloning, navigate into your project folder: cd DevOps-30-Day-Challenge
+
+<img width="1415" alt="createrepo" src="https://github.com/user-attachments/assets/87b875d7-477d-4adc-8f3d-f9ae90c9cb04" />
+
 
 3️⃣ Verify Your Structure
 Run: ls
@@ -325,6 +363,19 @@ Set Up the Environment:
 You can copy all of the .env config.py, etc files from my Github repository. 
 And copy to your remote Github files/folders. Commit changes concerning all folders, files, Dockerfule, etc. Once you do so remotely, go backk to 
 your local machine and in the main directory input git fetch. From there pull all of your remote changes to your local machine. For instance, I input git pull origin main. This should pull all changes. To ensure your local machine is update to date locally, input git status.
+
+<img width="1429" alt="gitpusfiles" src="https://github.com/user-attachments/assets/0458b9ff-6ec9-4cc1-bd80-d565debd4093" />
+
+
+<img width="1434" alt="gitpushorigin" src="https://github.com/user-attachments/assets/6a043987-01e7-4481-8b24-55120f0b2480" />
+
+
+<img width="1440" alt="srcfiles" src="https://github.com/user-attachments/assets/3d74ce36-aa33-4e8e-b9d3-2e9b5a90e42a" />
+
+
+<img width="1437" alt="gitstatus" src="https://github.com/user-attachments/assets/89477a5d-856c-47e5-86f4-afc31f5e366d" />
+
+
 This ensures your local environment is completely up-to-date with your remote repository.
 🎉 You’re All Set! Ready to crush the next steps? Let’s keep the momentum going! 💪
 
@@ -340,9 +391,21 @@ AWS_SECRET_ACCESS_KEY=your_aws_secret_access_key_here
 S3_BUCKET_NAME=your_S3_bucket_name_here
 MEDIACONVERT_ENDPOINT=https://your_mediaconvert_endpoint_here.amazonaws.com
 MEDIACONVERT_ROLE_ARN=arn:aws:iam::your_account_id:role/HighlightProcessorRole
+
+<img width="1439" alt="nanodotenv" src="https://github.com/user-attachments/assets/b501014e-b082-4437-9067-266c0f86c395" />
+
+
+<img width="1440" alt="nanoenv2" src="https://github.com/user-attachments/assets/4f777210-41e0-435c-836f-11d26a333183" />
+
+<img width="1434" alt="nanoenv" src="https://github.com/user-attachments/assets/c4fdf08f-b579-4f99-a315-2ad8f6ac87d1" />
+
+
 How to Fill These In:
 
 RAPIDAPI_KEY: Create an account on RapidAPI and search for "Sports Highlights." Subscribe to the API and grab your key from the "Subscribe to Test" section.
+
+<img width="1421" alt="sportshighlightrapidapi" src="https://github.com/user-attachments/assets/497bbe82-a220-4278-987f-a026b65f7521" />
+
 
 AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY: These keys are generated in your AWS IAM console. Make sure they’re secure.
 
@@ -353,6 +416,9 @@ aws mediaconvert describe-endpoints
 Copy the URL and paste it here.
 
 MEDIACONVERT_ROLE_ARN: This is the ARN for the MediaConvert role you created earlier. Replace your_account_id with your actual AWS account ID.
+
+<img width="1062" alt="envfile" src="https://github.com/user-attachments/assets/9ffbe097-eb27-43ee-a793-135ee4760f16" />
+
 
 Save and close the .env file by pressing CTRL+O to save and CTRL+X to exit. To keep your environment variables secure, lock down the permissions:
 
@@ -366,6 +432,10 @@ Here’s where the magic happens! 🚀 Let’s build and run our project using D
 In your CLI, build the Docker container:
 docker build -t highlight-processor .
 Watch as Docker processes your image into a container. If everything’s set up correctly, you’re almost there!
+
+<img width="1429" alt="dockerbuiltprocesst" src="https://github.com/user-attachments/assets/e987a7ff-1784-4721-a549-c3fb85328473" />
+
+
 Run the container with your .env file:
 docker run --env-file .env highlight-processor
 This will kick off the entire process! Our application will:
@@ -376,14 +446,29 @@ Verify the Results 🎉
 Let’s check the output of all our hard work:
 
 S3 Bucket Contents: Navigate to your bucket, and you’ll find these folders:
+
 highlights: Download the basketball_highlights.json file to see all the game highlights (try viewing it in VS Code).
+
+<img width="1435" alt="gamehighlightjson" src="https://github.com/user-attachments/assets/e88f68fd-4673-4f1c-a54a-fdbf7426ace7" />
+
 
 videos: Contains the uploaded first_video.mp4.
 
+<img width="1434" alt="highlghtprocvidbuc" src="https://github.com/user-attachments/assets/47554468-d831-4b03-883f-0d6374cbf58c" />
+
+
 processed_videos: Holds the final converted video! 🎥
+
 MediaConvert Job Details: In the AWS Management Console, search for MediaConvert and review the job we created for first_video.mp4.
 
+<img width="1109" alt="firstvidemediacov" src="https://github.com/user-attachments/assets/ca48eb9a-35f5-4cda-9ed1-e8f356e7a565" />
+
+
+
 View the Video: Download the processed video and watch it. Enjoy the sound, game highlights, and all the enhancements we implemented! Success! 🏀
+
+<img width="1421" alt="okayvidgamehighlight" src="https://github.com/user-attachments/assets/6f4fcd16-3b99-4cef-a79d-bed54d73aeda" />
+
 
 ### What We Learned 💡
 Using Docker to containerize and manage workflows.
@@ -397,6 +482,6 @@ Infrastructure as Code: Use Terraform to define the entire setup.
 Scalability: Process multiple videos in parallel with MediaConvert.
 Dynamic Date Ranges: Make the dates dynamic, such as "last 30 days" instead of hardcoded timestamps.
 
-
+#DevOpsAllStarChallenge
 
 

@@ -1,4 +1,4 @@
-# Docker and Soccer Stats: Everything You Need to Know About Containers
+# Docker and Soccer Stats: Everything You Need to Know About Containers⚽️
 
 You’re probably wondering: What exactly is a container? What’s it used for? Why do we need them? What do they actually do? My simple answer? Let’s just build one! The best way to learn is by doing. So instead of overthinking, let’s dive in and create a real-world project that shows how containers work in action!
 

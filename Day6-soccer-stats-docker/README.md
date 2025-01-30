@@ -1,4 +1,4 @@
-#### Docker and Soccer Stats: Everything You Need to Know About Containers⚽️
+# Docker and Soccer Stats: Everything You Need to Know About Containers
 
 You’re probably wondering: What exactly is a container? What’s it used for? Why do we need them? What do they actually do? My simple answer? Let’s just build one! The best way to learn is by doing. So instead of overthinking, let’s dive in and create a real-world project that shows how containers work in action!
 
@@ -25,10 +25,12 @@ Fire up your terminal and create a local folder to house your project. If you’
 For example, if I’m working in my DevOps-30-Day-Challenge repository, I would run:
 ```sh
 cd DevOps-30-Day-Challenge
+```
 Then, let’s create our soccer stats container project:
 ```sh
 mkdir soccer-stats-docker
 cd soccer-stats-docker
+```
 Ready to dive in? Let’s set up the rest of the project and get rolling! 🚀
 
 1️⃣ Create a New Folder Fire up your terminal and create a local folder to house your project.  On your local machine commmand line input these following commands to create our soccer container project:
@@ -39,6 +41,7 @@ cd soccer-stats-docker
 mkdir src tests
 touch src/__init__.py src/soccer_stats.py
 touch Dockerfile requirements.txt README.md .env
+```
 
 2️⃣ Clone Your GitHub Repository Head to GitHub and create a repository if you haven’t already: Create a New Repo. Clone your repository to your local machine. For example, my repo is named DevOps-30-Day-Challenge: git clone https://github.com/username-placeholder/DevOps-30-Day-Challenge.git After cloning, navigate into your project folder: cd DevOps-30-Day-Challenge
 
@@ -54,8 +57,8 @@ uvicorn==0.15.0        # ASGI server for FastAPI
 requests==2.26.0       # Making API calls less painful
 python-dotenv==0.19.0  # For keeping secrets secret
 pytest==6.2.5          # Because we test our code!
-
-This informatin is required for our code, the fast api for framework, uvicorn for the ASGI server for FastAPI, request for making API calls to our required other dependices and resources, python-dotenv for keeping our secrets hidden and encrypted, and finally pytest to of course test our code! 
+```
+This information is required for our code, the fast api for framework, uvicorn for the ASGI server for FastAPI, request for making API calls to our required other dependices and resources, python-dotenv for keeping our secrets hidden and encrypted, and finally pytest to of course test our code! 
 
 
 Enviroment Variable Lock ♻️🔐
@@ -64,6 +67,7 @@ You should have already created a .env file, if not you can do so by inputting i
 
 ```sh
 RAPID_API_KEY=your_api_key_here
+```
 
 1️⃣ DO NOT FORGET! ‼️ ⚠️⛔️ add the .env to your .gitignore file.
 
@@ -200,7 +204,7 @@ async def get_top_scorers(league_id: int = 39, season: int = 2023):
 async def health_check():
     """Health check endpoint"""
     return {"status": "healthy", "timestamp": datetime.now().isoformat()}
-
+```
 What This Code Does
 
 This script is a FastAPI-based API that fetches soccer player stats and top scorers using the API-Football service. It loads the API key from environment variables, makes requests to the external API, and serves the data through FastAPI endpoints.
@@ -224,13 +228,13 @@ datetime → Used to generate timestamps (for things like health checks).
 2. Loading Environment Variables
 ```sh
 load_dotenv()
-
+```
 This pulls in values from a .env file so that sensitive information (like the API key) isn’t hardcoded in the script.
 
 3. Setting Up FastAPI
 ```sh
 app = FastAPI(title="Soccer Stats API")
-
+```
 This initializes our API service and gives it a title. If you run this script, you can access FastAPI’s interactive documentation at /docs.
 
 4. Creating the SoccerStats Class
@@ -244,24 +248,25 @@ class SoccerStats:
         self.api_key = os.getenv('RAPID_API_KEY')
         if not self.api_key:
             raise ValueError("RAPID_API_KEY environment variable is not set")
-
+```
 ⚽︎It grabs the API key from environment variables.
 ⚽︎If the key is missing, it raises an error to prevent unauthorized requests.
 ```sh
 self.base_url = "https://api-football-v1.p.rapidapi.com/v3"
-
+```
 ⚽︎This is the base URL for all API requests.
 ```sh
 self.headers = {
     "X-RapidAPI-Key": self.api_key,
     "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com"
 }
+```
 ⚽︎These headers authenticate our API requests.
 
 5. Fetching Player Stats (get_player_stats)
 ```sh
 async def get_player_stats(self, player_id: int, season: int = 2023):
-
+```
 ⚽︎This function fetches statistics for a specific player in a given season (default: 2023).
 ⚽︎player_id is required, while season defaults to 2023 if not provided.
 
@@ -270,7 +275,7 @@ Building the API Request
 url = f"{self.base_url}/players"
 params = {"id": player_id, "season": season}
 response = requests.get(url, headers=self.headers, params=params)
-
+```
 ⚽︎The request is sent to /players with the player ID and season as parameters.
 
 Handling Errors
@@ -280,6 +285,7 @@ if response.status_code != 200:
         status_code=response.status_code,
         detail=f"API Error: {response.text}"
     )
+```
 ⚽︎If the API doesn’t return a 200 OK status, it throws an HTTP error.
 
 Processing the Response
@@ -287,13 +293,13 @@ Processing the Response
 data = response.json()
 if not data.get("response"):
     return {"message": "No data found for this player"}
-
+```
 ⚽︎If there’s no valid response, it returns a friendly error message instead of crashing.
 
 6. Fetching Top Scorers (get_top_scorers)
 ```sh
 async def get_top_scorers(self, league_id: int = 39, season: int = 2023):
-
+```
 ⚽︎This function fetches top goal scorers for a specific league.
 ⚽︎By default, it fetches Premier League (ID: 39) stats for the 2023 season.
 
@@ -302,7 +308,7 @@ Building the API Request
 url = f"{self.base_url}/players/topscorers"
 params = {"league": league_id, "season": season}
 response = requests.get(url, headers=self.headers, params=params)
-
+```
 ⚽︎Sends a request to /players/topscorers with the league ID and season.
 
 Handling API Errors
@@ -312,6 +318,7 @@ if response.status_code != 200:
         status_code=response.status_code,
         detail=f"API Error: {response.text}"
     )
+```
 ⚽︎If something goes wrong, it throws an HTTP exception instead of returning bad data.
 
 7. Creating the FastAPI Endpoints
@@ -320,7 +327,7 @@ Root Endpoint (/)
 ```sh
 @app.get("/")
 async def root():
-
+```
 ⚽︎This is the homepage of the API.
 ⚽︎It returns basic information about the API and the available endpoints.
 ```sh
@@ -333,42 +340,42 @@ return {
     ],
     "default_league": "Premier League (ID: 39)"
 }
-
+```
 ⚽︎Provides a friendly response for users who visit the API root.
 
 Player Stats Endpoint (/player/{player_id})
 ```sh
 @app.get("/player/{player_id}")
 async def get_player(player_id: int, season: int = 2023):
-
+```
 ⚽︎Takes a player ID and an optional season parameter (default: 2023).
 ⚽︎Calls the get_player_stats function and returns the result.
 ```sh
 return await stats.get_player_stats(player_id, season)
-
+```
 ⚽︎Uses await because get_player_stats is an asynchronous function.
 
 Top Scorers Endpoint (/topscorers/{league_id})
 ```sh
 @app.get("/topscorers/{league_id}")
 async def get_top_scorers(league_id: int = 39, season: int = 2023):
-
+```
 ⚽︎Takes a league ID and an optional season parameter (default: 2023).
 ⚽︎Calls get_top_scorers to fetch and return the data.
 ```sh
 return await stats.get_top_scorers(league_id, season)
-
+```
 ⚽︎Again, await is used because this function is async.
 
 Health Check Endpoint (/health)
 ```sh
 @app.get("/health")
 async def health_check():
-
+```
 ⚽︎Simple health check to confirm that the API is running.
 ```sh
 return {"status": "healthy", "timestamp": datetime.now().isoformat()}
-
+```
 ⚽︎Returns "status": "healthy" along with the current timestamp.
 ⚽︎Useful for monitoring system uptime.
 Final Thoughts
@@ -404,7 +411,7 @@ EXPOSE 8000
 
 # Command to run the application
 CMD ["uvicorn", "src.soccer_stats:app", "--host", "0.0.0.0", "--port", "8000"]
-
+```
 1.) Use a lightweight Python base image
 It starts with python:3.9-slim, which is a minimal version of Python 3.9 to keep the image small and efficient.
 
@@ -435,7 +442,7 @@ pip install -r requirements.txt
 
 # Run the application
 uvicorn src.soccer_stats:app --reload
-
+```
 Running Our Container🫙
 
 Lets now run our container! We have our file structure our code, etc, lets now run this!
@@ -444,12 +451,14 @@ Build and run the container:
 ```sh
 # Build the image
 docker build -t soccer-stats .
+```
 ```sh
 # Run the container: (with your API key)
 # On CLI nano .env and input your RAPIDAPI key
 docker run -p 8000:8000 --env-file .env soccer-stats
-
+```
 On your terminal copy or click the http://0.0.0.0:800 link. Open this in your browswer. You will your successful results: 
+```sh
 {
   "message": "Welcome to Soccer Stats API!",
   "version": "1.0",
@@ -459,7 +468,7 @@ On your terminal copy or click the http://0.0.0.0:800 link. Open this in your br
   ],
   "default_league": "Premier League (ID: 39)"
 }
-
+```
 API Endpoints
 
 / - Welcome message and available endpoints
@@ -489,7 +498,7 @@ If you encounter permission errors when running Docker commands, try:
 ```sh
 sudo usermod -aG docker $USER
 newgrp docker
-
+```
 🔹 API Key Issues
 If your API isn’t fetching data:
 ✅ Double-check that your RAPID_API_KEY is correctly set in .env.
@@ -507,7 +516,7 @@ docker logs <container-id>
 
 # Access the container shell
 docker exec -it <container-id> /bin/bash  
-
+```
 Resource Cleanup 🧹
 
 When you're done, clean up Docker resources to free up space:
@@ -524,12 +533,18 @@ docker rmi soccer-stats
 
 # Remove all unused containers, networks, and images (use with caution)
 docker system prune
-
+```
 This ensures that your environment stays clean and optimized for future projects.
 
 🔥 That’s a wrap! You’ve successfully built, tested, and deployed a fully containerized API. Keep pushing forward—this is just the beginning! 🚀💡
 
 Let me know if you need any refinements!
+
+
+
+
+
+
 
 
 

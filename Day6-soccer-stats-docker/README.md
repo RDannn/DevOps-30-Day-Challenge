@@ -9,13 +9,16 @@ Project Overview 🗃️
 We’re building a containerized Soccer Stats API that fetches real-time player statistics. Once retrieved, the data will be processed and run consistently across any environment. Throughout this project, we’ll cover:
 
 ✅ Using environment variables for security and flexibility
+
 ✅ Implementing FastAPI to build a lightweight, high-performance API
+
 ✅ Dockerizing our application for scalability and portability
+
 ✅ Structuring our project properly for maintainability
 
 By the end, you’ll have a fully functional API running inside a container—deployable anywhere, anytime!
 
-Prerequisites 📋✅
+## Prerequisites 📋✅
 
 Before we get started, let's set up our project folder and push everything to GitHub. Having a well-organized structure is key to maintaining clean and scalable projects.
 
@@ -47,7 +50,7 @@ touch Dockerfile requirements.txt README.md .env
 
 Alright, all set with our new project structure! We basically have created a soccer stat docker main folder via mkdir, changed directory into this folder with cd,and we also created a new src test folder. We then created __init__.py and soccer_stats.py files via our src folder. We then create Dockerfile, requirements.txt, README.md, and .env folders to round out our creation of our project! 📂 Amazing right! 🔥 Let's get more into this project further and explain and build each of our steps! 🧱
 
-Required Dependencies🧱
+## Required Dependencies🧱
 
 The required dependencies are our building blocks for this project! Via your local machine commmand line, we need to get into our requirements.txt file. Input on the CLI nano requirements.txt. Input these dependencies: 
 
@@ -61,7 +64,7 @@ pytest==6.2.5          # Because we test our code!
 This information is required for our code, the fast api for framework, uvicorn for the ASGI server for FastAPI, request for making API calls to our required other dependices and resources, python-dotenv for keeping our secrets hidden and encrypted, and finally pytest to of course test our code! 
 
 
-Enviroment Variable Lock ♻️🔐
+## Enviroment Variable Lock ♻️🔐
 
 You should have already created a .env file, if not you can do so by inputting in the CLI touch .env. In this .env file input this command:
 
@@ -73,13 +76,13 @@ RAPID_API_KEY=your_api_key_here
 
 2️⃣ DO NOT PUSH YOUR API KEYS to your PUBLIC GITHUB REPO! THIS IS A NO GO! ⛔️📵
 
-RAPIDAPI_KEY: Create an account on RapidAPI https://rapidapi.com/hub and search for "Sports Highlights." Subscribe to the API and grab your key from the "Subscribe to Test" section.
+### RAPIDAPI_KEY: Create an account on RapidAPI https://rapidapi.com/hub and search for "Sports Highlights." Subscribe to the API and grab your key from the "Subscribe to Test" section.
 
-Docker Run🏃‍♂️
+### Docker Run🏃‍♂️
 
 Ensure your Docker enviroment is running via Docker Desktop for stance. Docker needs to run our Dockerfile, image, etc...
 
-Code Breakdown: 💻
+## Code Breakdown: 💻
 
 Let's break down our code 👨🏾‍💻 for this project! This code is needed to implement our project end to end. Let's get back into our soccer_stats.py file via the src folder. cd src. We then need to input the python code for this py file. nano soccer_stats.py. Input this following code: 
 
@@ -205,7 +208,7 @@ async def health_check():
     """Health check endpoint"""
     return {"status": "healthy", "timestamp": datetime.now().isoformat()}
 ```
-What This Code Does
+## What This Code Does
 
 This script is a FastAPI-based API that fetches soccer player stats and top scorers using the API-Football service. It loads the API key from environment variables, makes requests to the external API, and serves the data through FastAPI endpoints.
 
@@ -388,7 +391,7 @@ This script sets up a complete soccer stats API using FastAPI. It:
 
 Now, we can run this with Uvicorn and start making API calls! Let's get it! 🚀
 
-Dockerfile💻
+## Dockerfile💻
 
 ```sh
 # Use Python 3.9 slim base image
@@ -432,7 +435,7 @@ EXPOSE 8000 tells Docker that this container will communicate over port 8000 (de
 7.) Run the FastAPI application
 The CMD command launches the FastAPI app using Uvicorn, making it accessible on 0.0.0.0:8000. This allows it to accept connections from any network interface inside the container.
 
-Locally Test Environment🧪
+## Locally Test Environment🧪
 
 Let's locally test our environment via our local machine CLI! Input the following:
 
@@ -443,7 +446,7 @@ pip install -r requirements.txt
 # Run the application
 uvicorn src.soccer_stats:app --reload
 ```
-Running Our Container🫙
+## Running Our Container🫙
 
 Lets now run our container! We have our file structure our code, etc, lets now run this!
 
@@ -469,7 +472,7 @@ On your terminal copy or click the http://0.0.0.0:800 link. Open this in your br
   "default_league": "Premier League (ID: 39)"
 }
 ```
-API Endpoints
+### API Endpoints
 
 / - Welcome message and available endpoints
 /health - Health check endpoint
@@ -477,7 +480,7 @@ API Endpoints
 /topscorers/{league_id} - Get top scorers for a league (default: Premier League)
 
 
-Verifying the Setup
+## Verifying the Setup
 
 After running the API, check your CLI—you should see a "200 OK" status message, confirming a successful connection.
 
@@ -490,7 +493,7 @@ Now, open Docker Desktop and navigate to:
 
 👉 Press CTRL + C in your CLI to stop the running container.
 
-Debugging Tips 🛠️
+## Debugging Tips 🛠️
 
 Common Issues & Fixes
 🔹 Docker Permission Issues
@@ -517,7 +520,7 @@ docker logs <container-id>
 # Access the container shell
 docker exec -it <container-id> /bin/bash  
 ```
-Resource Cleanup 🧹
+## Resource Cleanup 🧹
 
 When you're done, clean up Docker resources to free up space:
 

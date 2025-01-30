@@ -4,7 +4,7 @@ You’re probably wondering: What exactly is a container? What’s it used for? 
 
 This project is all about getting hands-on with Docker while building a containerized Soccer Stats API. We’ll break it down step by step so you can truly understand how to use containers in real-world applications.
 
-Project Overview 🗃️
+## Project Overview 🗃️
 
 We’re building a containerized Soccer Stats API that fetches real-time player statistics. Once retrieved, the data will be processed and run consistently across any environment. Throughout this project, we’ll cover:
 
@@ -22,10 +22,11 @@ By the end, you’ll have a fully functional API running inside a container—de
 
 Before we get started, let's set up our project folder and push everything to GitHub. Having a well-organized structure is key to maintaining clean and scalable projects.
 
-1️⃣ Create a New Folder
+1️⃣ Create a New Folder📂
+
 Fire up your terminal and create a local folder to house your project. If you’re using VS Code, iTerm, or any other terminal, navigate to the directory where you want to store this project.
 
-For example, if I’m working in my DevOps-30-Day-Challenge repository, I would run:
+For example, I’m working in my DevOps-30-Day-Challenge repository, I would run:
 ```sh
 cd DevOps-30-Day-Challenge
 ```
@@ -33,22 +34,30 @@ Then, let’s create our soccer stats container project:
 ```sh
 mkdir soccer-stats-docker
 cd soccer-stats-docker
-```
-Ready to dive in? Let’s set up the rest of the project and get rolling! 🚀
-
-1️⃣ Create a New Folder Fire up your terminal and create a local folder to house your project.  On your local machine commmand line input these following commands to create our soccer container project:
-
-```sh
-mkdir soccer-stats-docker
-cd soccer-stats-docker
 mkdir src tests
 touch src/__init__.py src/soccer_stats.py
 touch Dockerfile requirements.txt README.md .env
 ```
+Ready to dive in? Let’s set up the rest of the project and get rolling! 🚀
 
-2️⃣ Clone Your GitHub Repository Head to GitHub and create a repository if you haven’t already: Create a New Repo. Clone your repository to your local machine. For example, my repo is named DevOps-30-Day-Challenge: git clone https://github.com/username-placeholder/DevOps-30-Day-Challenge.git After cloning, navigate into your project folder: cd DevOps-30-Day-Challenge
+2️⃣ Clone Your GitHub Repository
+If you haven’t already, head over to GitHub and create a new repository: https://github.com/new. Once your repo is set up, clone it to your local machine using the following command (replace username-placeholder with your GitHub username):
+```sf
+git clone https://github.com/username-placeholder/DevOps-30-Day-Challenge.git
+```
+After cloning, navigate into your project folder:
+```sh
+cd DevOps-30-Day-Challenge
+```
+Great! Our project structure is now in place. 🚀
 
-Alright, all set with our new project structure! We basically have created a soccer stat docker main folder via mkdir, changed directory into this folder with cd,and we also created a new src test folder. We then created __init__.py and soccer_stats.py files via our src folder. We then create Dockerfile, requirements.txt, README.md, and .env folders to round out our creation of our project! 📂 Amazing right! 🔥 Let's get more into this project further and explain and build each of our steps! 🧱
+Here's what we've accomplished so far:
+✅ Created a main project folder for our soccer stats Docker project using mkdir.
+✅ Changed directories into this folder with cd.
+✅ Set up a src folder for our code and added __init__.py and soccer_stats.py.
+✅ Created essential project files: Dockerfile, requirements.txt, README.md, and .env.
+
+Pretty cool, right? 🔥 Now, let’s break things down further and build out each step! 🏗️
 
 ## Required Dependencies🧱
 

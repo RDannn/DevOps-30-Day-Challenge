@@ -41,7 +41,7 @@ touch Dockerfile requirements.txt README.md .env
 Ready to dive in? Let’s set up the rest of the project and get rolling! 🚀
 
 2️⃣ Clone Your GitHub Repository
-If you haven’t already, head over to GitHub and create a new repository: https://github.com/new. Once your repo is set up, clone it to your local machine using the following command (replace username-placeholder with your GitHub username):
+If you haven’t already, head over to GitHub and create a new repository. Once your repo is set up, clone it to your local machine using the following command (replace username-placeholder with your GitHub username):
 ```sf
 git clone https://github.com/username-placeholder/DevOps-30-Day-Challenge.git
 ```
@@ -49,12 +49,57 @@ After cloning, navigate into your project folder:
 ```sh
 cd DevOps-30-Day-Challenge
 ```
-Great! Our project structure is now in place. 🚀
+🚀 Push Your Project to GitHub
+1️⃣ Initialize Git in Your Project Folder
+
+First, ensure you're inside your project folder. Open your terminal and navigate to your project directory:
+```sh
+cd (placeholder)DevOps-30-Day-Challenge
+```
+Then, initialize Git:
+```sh
+git init
+```
+2️⃣ Add Your Remote GitHub Repository
+
+Link your local project to the remote GitHub repository (replace username-placeholder with your GitHub username):
+```sh
+git remote add origin https://github.com/username-placeholder/DevOps-30-Day-Challenge.git
+```
+3️⃣ Add All Files to Git
+
+To track all files and folders inside your project directory, run:
+```sh
+git add .
+```
+4️⃣ Commit Your Changes
+
+Create a commit message describing your initial upload:
+```sh
+git commit -m "Initial project setup with Docker and soccer stats API"
+```
+5️⃣ Push to GitHub
+
+Finally, push your project to the main branch:
+```sh
+git branch -M main
+git push -u origin main
+```
+6️⃣ Verify Your Upload
+
+Go to your GitHub repository in your browser, refresh the page, and you should see all your project files uploaded. 🎉
+
+Now your project is successfully pushed to GitHub! 🔥 Our project structure is now in place! Ready to start coding? 🚀
+ 
 
 Here's what we've accomplished so far:
+
 ✅ Created a main project folder for our soccer stats Docker project using mkdir.
+
 ✅ Changed directories into this folder with cd.
+
 ✅ Set up a src folder for our code and added __init__.py and soccer_stats.py.
+
 ✅ Created essential project files: Dockerfile, requirements.txt, README.md, and .env.
 
 Pretty cool, right? 🔥 Now, let’s break things down further and build out each step! 🏗️

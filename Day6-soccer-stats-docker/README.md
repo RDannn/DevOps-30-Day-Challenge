@@ -34,6 +34,8 @@ For example, I’m working in my DevOps-30-Day-Challenge repository, I would run
 ```sh
 cd DevOps-30-Day-Challenge
 ```
+<img width="1438" alt="cddev" src="https://github.com/user-attachments/assets/1584d541-2b62-4d25-8026-417809043b13" />
+
 Then, let’s create our soccer stats container project:
 ```sh
 mkdir soccer-stats-docker
@@ -42,11 +44,14 @@ mkdir src tests
 touch src/__init__.py src/soccer_stats.py
 touch Dockerfile requirements.txt README.md .env
 ```
+<img width="1439" alt="mkdirtouch" src="https://github.com/user-attachments/assets/01cbf03e-3aa1-4264-9b1d-9771c6c57586" />
+
+
 Ready to dive in? Let’s set up the rest of the project and get rolling! 🚀
 
 2️⃣ Clone Your GitHub Repository
 If you haven’t already, head over to GitHub and create a new repository. Once your repo is set up, clone it to your local machine using the following command (replace username-placeholder with your GitHub username):
-```sf
+```sh
 git clone https://github.com/username-placeholder/DevOps-30-Day-Challenge.git
 ```
 After cloning, navigate into your project folder:
@@ -135,6 +140,13 @@ RAPID_API_KEY=your_api_key_here
 2️⃣ DO NOT PUSH YOUR API KEYS to your PUBLIC GITHUB REPO! THIS IS A NO GO! ⛔️📵
 
 ### RAPIDAPI_KEY: Create an account on RapidAPI https://rapidapi.com/hub and search for "Sports Highlights." Subscribe to the API and grab your key from the "Subscribe to Test" section.
+
+<img width="1438" alt="rapidapi" src="https://github.com/user-attachments/assets/50136518-1eff-4de6-9676-8deec8e22ecf" />
+
+
+<img width="1421" alt="sportshighlightrapidapi" src="https://github.com/user-attachments/assets/6a4d7ca5-4d31-498a-ba6a-c5361d5cf02f" />
+
+
 
 ### Docker Run🏃‍♂️
 
@@ -530,14 +542,6 @@ On your terminal copy or click the http://0.0.0.0:800 link. Open this in your br
   "default_league": "Premier League (ID: 39)"
 }
 ```
-### API Endpoints
-
-/ - Welcome message and available endpoints
-/health - Health check endpoint
-/player/{player_id} - Get player statistics
-/topscorers/{league_id} - Get top scorers for a league (default: Premier League)
-
-
 ## Verifying the Setup
 
 After running the API, check your CLI—you should see a "200 OK" status message, confirming a successful connection.
@@ -545,7 +549,27 @@ After running the API, check your CLI—you should see a "200 OK" status message
 Now, open Docker Desktop and navigate to:
 
 ✅ Images – You should see your soccer-stats:latest image listed.
+
+<img width="1271" alt="dockerimage" src="https://github.com/user-attachments/assets/16ef6774-092e-4e39-9b9d-c58250c9946d" />
+
+
 ✅ Containers – Your soccer-stats container should be running on port 8000:8000.
+
+<img width="1440" alt="docker8080" src="https://github.com/user-attachments/assets/75b7f084-0479-4c52-af2d-0f6130c91216" />
+
+
+### API Endpoints
+
+/ - Welcome message and available endpoints
+
+/health - Health check endpoint
+
+/player/{player_id} - Get player statistics
+
+/topscorers/{league_id} - Get top scorers for a league (default: Premier League)
+
+<img width="1440" alt="printstats" src="https://github.com/user-attachments/assets/bcebc394-5807-4290-a0d2-d5cd5890db08" />
+
 
 🚀 Success! We’ve successfully containerized and deployed our API! Our Dockerfile built an image, created a containerized environment, and pulled real-time soccer stats from an external API. We also tested it locally and got successful results. Keep climbing! 💪🔥
 
@@ -562,8 +586,11 @@ newgrp docker
 ```
 🔹 API Key Issues
 If your API isn’t fetching data:
+
 ✅ Double-check that your RAPID_API_KEY is correctly set in .env.
+
 ✅ Verify that your key is valid on RapidAPI.
+
 ✅ Ensure the key is being passed properly to the container.
 
 🔹 Container Access Issues

@@ -161,6 +161,9 @@ Let's break down our code 👨🏾‍💻 for this project! This code is needed 
 
 soccer_stats.py💻
 
+<img width="1440" alt="nanosoccerpy" src="https://github.com/user-attachments/assets/669fec70-00f1-4c87-9d21-8d6fb9d9a0b4" />
+
+
 ```sh
 # src/soccer_stats.py
 import os

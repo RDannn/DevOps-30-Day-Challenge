@@ -503,6 +503,7 @@ The WORKDIR /app command creates and sets /app as the working directory inside t
 
 3.) Copy the dependencies file first
 The COPY requirements.txt . step copies the requirements.txt file into the container. This is done first to take advantage of Docker’s caching mechanism, meaning dependencies won’t need to be reinstalled unless requirements.txt changes.
+
 4.) Install dependencies
 The RUN pip install --no-cache-dir -r requirements.txt command installs all required Python packages listed in requirements.txt, without caching to keep the image lightweight.
 

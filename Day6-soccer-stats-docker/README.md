@@ -152,6 +152,9 @@ RAPID_API_KEY=your_api_key_here
 
 Ensure your Docker enviroment is running via Docker Desktop for stance. Docker needs to run our Dockerfile, image, etc...
 
+<img width="1264" alt="dockerstart" src="https://github.com/user-attachments/assets/b3a61700-af63-41c9-b385-d3680f92aeca" />
+
+
 ## Code Breakdown: 💻
 
 Let's break down our code 👨🏾‍💻 for this project! This code is needed to implement our project end to end. Let's get back into our soccer_stats.py file via the src folder. cd src. We then need to input the python code for this py file. nano soccer_stats.py. Input this following code: 
@@ -454,9 +457,13 @@ return {"status": "healthy", "timestamp": datetime.now().isoformat()}
 Final Thoughts
 
 This script sets up a complete soccer stats API using FastAPI. It:
+
 ✅ Loads API credentials securely
+
 ✅ Fetches player stats and top scorers
+
 ✅ Provides structured FastAPI endpoints
+
 ✅ Includes a health check
 
 Now, we can run this with Uvicorn and start making API calls! Let's get it! 🚀
@@ -525,11 +532,15 @@ Build and run the container:
 # Build the image
 docker build -t soccer-stats .
 ```
+<img width="1440" alt="dockerbuild" src="https://github.com/user-attachments/assets/cd948047-3ba6-4fa5-b1c5-8c6eb5de118e" />
+
 ```sh
 # Run the container: (with your API key)
 # On CLI nano .env and input your RAPIDAPI key
 docker run -p 8000:8000 --env-file .env soccer-stats
 ```
+<img width="1440" alt="dockerrun" src="https://github.com/user-attachments/assets/6301a5cd-2898-480a-9edd-1e68b38577fd" />
+
 On your terminal copy or click the http://0.0.0.0:800 link. Open this in your browswer. You will your successful results: 
 ```sh
 {
@@ -552,10 +563,16 @@ Now, open Docker Desktop and navigate to:
 
 <img width="1271" alt="dockerimage" src="https://github.com/user-attachments/assets/16ef6774-092e-4e39-9b9d-c58250c9946d" />
 
+<img width="1259" alt="soccerlatestimage" src="https://github.com/user-attachments/assets/7d178334-4e33-471e-a4ba-8a9e8298bbcd" />
+
+
 
 ✅ Containers – Your soccer-stats container should be running on port 8000:8000.
 
 <img width="1440" alt="docker8080" src="https://github.com/user-attachments/assets/75b7f084-0479-4c52-af2d-0f6130c91216" />
+
+<img width="1262" alt="docker container" src="https://github.com/user-attachments/assets/2ad16705-84ca-469d-9ab1-9ded676084c5" />
+
 
 
 ### API Endpoints

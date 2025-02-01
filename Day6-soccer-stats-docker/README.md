@@ -333,6 +333,7 @@ class SoccerStats:
             raise ValueError("RAPID_API_KEY environment variable is not set")
 ```
 ⚽︎It grabs the API key from environment variables.
+
 ⚽︎If the key is missing, it raises an error to prevent unauthorized requests.
 ```sh
 self.base_url = "https://api-football-v1.p.rapidapi.com/v3"
@@ -351,6 +352,7 @@ self.headers = {
 async def get_player_stats(self, player_id: int, season: int = 2023):
 ```
 ⚽︎This function fetches statistics for a specific player in a given season (default: 2023).
+
 ⚽︎player_id is required, while season defaults to 2023 if not provided.
 
 Building the API Request
@@ -384,6 +386,7 @@ if not data.get("response"):
 async def get_top_scorers(self, league_id: int = 39, season: int = 2023):
 ```
 ⚽︎This function fetches top goal scorers for a specific league.
+
 ⚽︎By default, it fetches Premier League (ID: 39) stats for the 2023 season.
 
 Building the API Request
@@ -412,6 +415,7 @@ Root Endpoint (/)
 async def root():
 ```
 ⚽︎This is the homepage of the API.
+
 ⚽︎It returns basic information about the API and the available endpoints.
 ```sh
 return {
@@ -432,6 +436,7 @@ Player Stats Endpoint (/player/{player_id})
 async def get_player(player_id: int, season: int = 2023):
 ```
 ⚽︎Takes a player ID and an optional season parameter (default: 2023).
+
 ⚽︎Calls the get_player_stats function and returns the result.
 ```sh
 return await stats.get_player_stats(player_id, season)
@@ -444,6 +449,7 @@ Top Scorers Endpoint (/topscorers/{league_id})
 async def get_top_scorers(league_id: int = 39, season: int = 2023):
 ```
 ⚽︎Takes a league ID and an optional season parameter (default: 2023).
+
 ⚽︎Calls get_top_scorers to fetch and return the data.
 ```sh
 return await stats.get_top_scorers(league_id, season)
@@ -460,6 +466,7 @@ async def health_check():
 return {"status": "healthy", "timestamp": datetime.now().isoformat()}
 ```
 ⚽︎Returns "status": "healthy" along with the current timestamp.
+
 ⚽︎Useful for monitoring system uptime.
 Final Thoughts
 
@@ -603,6 +610,7 @@ Now, open Docker Desktop and navigate to:
 ## Debugging Tips 🛠️
 
 Common Issues & Fixes
+
 🔹 Docker Permission Issues
 If you encounter permission errors when running Docker commands, try:
 ```sh

@@ -300,7 +300,7 @@ Ready to dive in? Let’s set up your local environment and get rolling with thi
 Fire up your terminal and create a local folder to house your project. For example: mkdir -p "Day5-ncaa-folderplaceholder". Now, move into the folder: cd "Day5-ncaa-folderplaceholder"
 
 2️⃣ Clone Your GitHub Repository
-Head to GitHub and create a repository if you haven’t already: [Create a New Repo](https://github.com/new).
+Head to GitHub and create a repository if you haven’t already.
 Clone your repository to your local machine. For example, my repo is named DevOps-30-Day-Challenge: git clone https://github.com/username-placeholder/DevOps-30-Day-Challenge.git
 After cloning, navigate into your project folder: cd DevOps-30-Day-Challenge
 

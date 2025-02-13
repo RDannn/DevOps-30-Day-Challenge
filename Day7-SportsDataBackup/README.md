@@ -1,3 +1,7 @@
+# SportsDataBackup
+
+
+
 🚨 NEW PROJECT ALERT! ‼️ Are you ready?!
 
 Welcome back to another phenomenal project we’re about to create! 🎉
@@ -10,14 +14,14 @@ Let’s keep building! 🧱
 We’ll also focus on automation, automating data backups and ensuring our architecture for resiliency. 
 By integrating these AWS services, we’ll enhance and reinforce our highly available, fault-tolerant architecture, which can be applied to all future projects. Let’s go! 🚀
 
-Project Overview 🗃️
+## Project Overview 🗃️
 
 Just a heads-up, we’ll be using our previous NCAA Game Highlights application that we built with containers. The goal of this project isn’t necessarily to create something entirely new. Instead, we’ll focus on backing up data we already have while learning new strategies and approaches that we can apply to future architectures. 
 This will essentially follow the same NCAA Game Highlights architecture, but with a few new updates and iterations. 
 Remember in our original NCAA Game Highlights project, we grabbed/fetched one enhanced video? Well, with this project, guess what?! We’ll be grabbing between 1-10 videos! �� Amazing, right?!
 You might be wondering… how will we do this? 🤔 Well, this time, we’ll be working with more files within the data, which will allow us to pull more media/videos!
 
-Storage & Backup Plan
+## Storage & Backup Plan
 
 Keep in mind, the data will be backed up to two places. Think of it as two storage locations 🗄️:
 
@@ -33,10 +37,10 @@ Once again, we’ll be using AWS Elemental MediaConvert to convert and enhance o
 🎥 Elemental will boost the video and audio quality of our files for a more refined output! 📹📼
 
 
-Implementing new AWS Services💻
+## Implementing new AWS Services💻
 
 
-DynamoDB: Creating Our Table & Features🗄️
+### DynamoDB: Creating Our Table & Features🗄️
 
 DynamoDB is awesome! It is a serverless NoSQL database that works off of key-value pairs! 
 It scales automatically and can store millions of records, making it perfect for high-read and high-write applications! 📉
@@ -47,17 +51,17 @@ For example, fetching and writing our data files as backups and then pulling the
 Real-world applications benefit from DynamoDB’s fast read and write features. But what if the data keeps increasing? Will this slow down the database? 
 No! DynamoDB has auto-scaling, so as data grows, it automatically adjusts capacity up or down to handle the load!
 
-Cost Efficiency💳
+### Cost Efficiency💳
 
 Another great feature is cost savings! We don’t have to manually provision resources—we only pay for what we use! Basically, you pay for what you use! 
 You get what you pay for! LOL 🤑💸
 
-High Availability & Multi-Region Replication
+### High Availability & Multi-Region Replication
 
 DynamoDB is also highly available, with multi-region replication, which is crucial for this project! What if one region goes down? Say there’s an outage, no worries! 
 With replication across multiple regions, DynamoDB remains resilient and keeps running, so our end users won’t even notice a thing! 🤯
 
-Data Storage & Backups
+### Data Storage & Backups
 
 Every time a new sports highlight is fetched, it will be stored in our database! 
 Each highlight entry will include a unique primary key, like event date, league name, URL, metadata, etc.
@@ -78,12 +82,12 @@ We know men’s NCAA basketball games happen Tuesday-Sunday, and women’s games
 As soon as data is brought in, we take a snapshot and back it up for long-term storage. Bingo! 👨🏾‍💻 You’re thinking like an engineer! 
 Great job putting on your architect hat! 👷��‍♂️
 
-Import/Export to S3
+### Import/Export to S3
 
 Another cool feature, DynamoDB can import/export data to S3! You can send your database data directly to an S3 bucket for further storage, analysis, or archiving. 
 Pretty cool! 🚀
 
-Cloudwatch: Logging & Troubleshooting👨🏾‍💻
+### Cloudwatch: Logging & Troubleshooting👨🏾‍💻
 
 We will also be using Amazon CloudWatch to monitor and log the actions of our resources and services. 
 CloudWatch collects and analyzes logs, metrics, and events from AWS services like EC2, Lambda, and API Gateway, providing real-time insights into system performance. 
@@ -92,9 +96,9 @@ CloudWatch Logs allow us to store and analyze application and system logs, while
 Overall, CloudWatch plays a crucial role in keeping our AWS environment optimized, secure, and reliable.
 
 
-Code Breakdown: 💻
+## Code Breakdown: 💻
 
-.env💻
+### .env💻
 
 Setting Up Environment Variables
 
@@ -112,7 +116,7 @@ To avoid hardcoding sensitive data in our scripts!
 
 We’ll also introduce something new—GetText—which allows us to swap out variables dynamically within our templates.
 
-Understanding the .env File
+### Understanding the .env File
 
 This file contains all the necessary environment variables needed for our sports highlights backup system to function correctly. It covers AWS account details, ECS task settings, API credentials, S3 storage, IAM roles, and CloudWatch logging.
 
@@ -250,7 +254,7 @@ Every value here plays a critical role in running a smooth, automated highlight 
 
 🔥 Now, with these settings in place, we’re ready to launch the full pipeline! 🚀
 
-Step 1: Create & Configure the .env File
+## Step 1: Create & Configure the .env File
 
 🔎 Find & Replace the following values:
 
@@ -270,7 +274,7 @@ SUBNET_ID = subnet-xxxxx
 
 SECURITY_GROUP_ID = sg-xxxxx  
 
-Step 2: Get Your Subnet ID & Security Group ID
+## Step 2: Get Your Subnet ID & Security Group ID
 
 1️⃣ Go to the GitHub repo 📁 and open the resources folder.
 
@@ -288,19 +292,20 @@ bash vpc_setup.sh
 
 5️⃣ The output will provide the Subnet ID and Security Group ID—copy & paste these values into your .env file under SUBNET_ID and SECURITY_GROUP_ID.
 
-Step 3: Load Your Environment Variables
+## Step 3: Load Your Environment Variables
 
 Run the following command to load your .env file into the terminal:
-
+```sh
 set -a
 source .env
 set +a
+```
 (Optional) Verify that your variables are correctly loaded:
-
+```sh
 echo $AWS_LOGS_GROUP
 echo $TASK_FAMILY
 echo $AWS_ACCOUNT_ID
-
+```
 🔥 And that’s it! We’re all set up! Now we can move forward with deploying and running our updated NCAA Game Highlights backup system.
 
 💡 Key Takeaways:
@@ -315,7 +320,7 @@ echo $AWS_ACCOUNT_ID
 
 🛠️ Let’s keep building and breakdown config.py next! 🚀
 
-config.py💻
+## config.py💻
 
 🔹 API & Fetch Settings (Where we pull data from)
 
@@ -363,7 +368,7 @@ WAIT_TIME_BETWEEN_SCRIPTS → Pauses 60 seconds before running the next script
 
 🔥 This config file ensures everything runs dynamically without hardcoding values. By using environment variables, we keep it flexible, secure, and easy to update! 🚀
 
-fetch.py💻
+### fetch.py💻
 
 🏀 Fetching & Processing Basketball Highlights
 
@@ -375,7 +380,7 @@ Uses requests for API calls
 
 Pulls configs from config.py
 
-🔍 Fetching Highlights from API (fetch_highlights())
+### 🔍 Fetching Highlights from API (fetch_highlights())
 
 Calls RapidAPI to get basketball highlights
 
@@ -431,7 +436,7 @@ Store in DynamoDB
 
 🔥 This script automates the process of fetching, storing, and saving basketball highlights, ensuring seamless AWS integration! 🚀
 
-mediaconvert_process.py💻
+## mediaconvert_process.py💻
 
 🎬 AWS MediaConvert Video Processing Script
 
@@ -482,7 +487,7 @@ Sets status updates every 60 seconds
 
 🔥 This script automates video processing via AWS MediaConvert, ensuring optimized MP4 output stored in S3! 🚀
 
-process_videos.py💻
+## process_videos.py💻
 
 AWS S3 Video Processing Script
 🔹 Dependencies
@@ -527,7 +532,7 @@ Sets Content-Type to "video/mp4"
 🔥 This script automates video fetching, downloading, and uploading to AWS S3 for further processing! 🚀
 
 
-run_all.py💻
+## run_all.py💻
 
 🚀 Automated Video Processing Pipeline
 
@@ -561,9 +566,9 @@ Uses AWS Elemental MediaConvert to encode videos
 Amazing! We've thoroughly broken down our code, explained why we're using it, and how it interacts with each of our services. 
 Now, let's dive into the IAM roles needed to run our services and resources!🚀
 
-Roles👩🏽‍💻👨🏾‍💻
+# Roles👩🏽‍💻👨🏾‍💻
 
-ecsEventsRole-Policy🧑🏾‍💻
+## ecsEventsRole-Policy🧑🏾‍💻
 
 We start by breaking down our ECS events role. This role does the following:
 
@@ -575,7 +580,7 @@ We start by breaking down our ECS events role. This role does the following:
 
 This role helps for automating and managing our ECS workloads effectively! 🚀 
 
-ecsEventsRole-Trust🧑🏾‍💻
+## ecsEventsRole-Trust🧑🏾‍💻
 
 🔑 Allows ECS Tasks to Assume This Role – Grants permission for Amazon ECS tasks (ecs-tasks.amazonaws.com) to use this role.
 
@@ -583,7 +588,7 @@ ecsEventsRole-Trust🧑🏾‍💻
 
 This role is a must-have for ECS tasks to interact securely with other AWS services! 🚀
 
-ecsTarget🧑🏾‍💻
+## ecsTarget🧑🏾‍💻
 
 🔹 Targets an ECS Cluster – This rule is set up to trigger tasks inside the specified ECS cluster (${ECS_CLUSTER}).
 
@@ -594,7 +599,7 @@ ecsTarget🧑🏾‍💻
 🌐 Custom Network Configuration – The task runs inside specific subnets (${SUBNET_ID}) and security groups (${SECURITY_GROUP_ID}) with a public IP assigned.
 This setup ensures that an ECS task is triggered automatically with the right permissions, networking, and Fargate execution! 🔥
 
-s3_dynamodb_policy🧑🏾‍💻
+## s3_dynamodb_policy🧑🏾‍💻
 
 📂 S3 Bucket Access – Allows listing (ListBucket) the contents of ${S3_BUCKET_NAME}.
 
@@ -641,7 +646,7 @@ Let's now get into our prerequisites and build this project out! 👷🏾‍♂�
 
 
 
-Prerequisites ⚒️
+# Prerequisites ⚒️
 
 Before diving into the scripts, make sure you've got the following in place:
 
@@ -664,20 +669,20 @@ to your operating system/environment.
 
 
 
-Retrieve Your AWS Account ID ☁️🔑 
+### Retrieve Your AWS Account ID ☁️🔑 
 
 To get your AWS Account ID, log in to the AWS Management Console. 
 Click on your account name in the top-right corner, and you’ll see your Account ID. 
 Copy and save this ID somewhere secure because you’ll need it later when updating the code in the labs.
 
 
-Retrieve Access Keys and Secret Access Keys🔑 
+### Retrieve Access Keys and Secret Access Keys🔑 
 
 In the IAM dashboard, check under Users for your access keys. 
 Click on your main user that has the credentials, go to Security Credentials, and scroll down to find the Access Key section. 
 If you don’t have a secret access key, you’ll need to create one, as it can’t be retrieved later. Make sure you save it securely!🔑
 
-Step 3: Create Local Folder and Clone Repository🗂️
+### Step 3: Create Local Folder and Clone Repository🗂️
 
 Ready to dive in? Let’s set up your local environment and get rolling with this project!
 
@@ -719,22 +724,23 @@ DevOps-30-Day-Challenge/
 
 Now would be a great time to set up and create our DynamoDB table, right? 🤔 Let’s do it! Time to dive in! 🤿🏊🏾
 
-Step 1: Create the DynamoDB table 🫙
+## Step 1: Create the DynamoDB table 🫙
 
 Sign in to the AWS console. In the AWS serach box, type DynamoDB. Click "Create table". Name the table "SportsHighlights". For the "Partition key" input "Id". Leave the rest of 
 the defaults and click "Create table". The table is now all set to go! 
 
-tep 2: Create S3 Bucket🪣
+### Step 2: Create S3 Bucket🪣
 
 We will now need to create the S3 bucket🪣 and its contents. 
 Open the Cloudshell Terminal. Input this code and ensure you make your bucket unique. 'aws s3api create-bucket --bucket <your-alias>newhighlight-final --region us-east-1'. 
 To verify the bucket input command, 'aws s3 ls'. You should see your bucket listed. Let's continue now setting up the rest of this project!
 
-Step 2: Set Up and Configure the .env File
+### Step 2: Set Up and Configure the .env File
 
 Replace the following placeholders with your actual AWS details:
 
 Your-AWS-Account-ID → Run this command to get your account ID:
+
 aws sts get-caller-identity --query "Account" --output text
 Your-RAPIDAPI-Key
 Your-AWS-Access-Key

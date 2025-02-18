@@ -766,61 +766,94 @@ To verify the bucket input command, 'aws s3 ls'. You should see your bucket list
 
 
 Use envsubst to replace placeholders in your JSON templates:
-
-envsubst < taskdef.template.json > taskdef.json  
-envsubst < s3_dynamodb_policy.template.json > s3_dynamodb_policy.json  
-envsubst < ecsTarget.template.json > ecsTarget.json  
-envsubst < ecseventsrole-policy.template.json > ecseventsrole-policy.json  
+```sh
+envsubst < taskdef.template.json > taskdef.json
+``` 
+```sh
+envsubst < s3_dynamodb_policy.template.json > s3_dynamodb_policy.json
+``` 
+```sh
+envsubst < ecsTarget.template.json > ecsTarget.json
+``` 
+```sh
+envsubst < ecseventsrole-policy.template.json > ecseventsrole-policy.json
+``` 
 Optional: Confirm the Replacements
 Check the generated files using cat or open them in a text editor to ensure placeholders were replaced correctly.
 
 Step 5: Build and Push Docker Image
 
 1. Create an ECR Repository
-aws ecr create-repository --repository-name sports-backup  
-2. Log In to ECR
-aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com  
-3. Build the Docker Image
-docker build -t sports-backup .  
-4. Tag the Image for ECR
-docker tag sports-backup:latest ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/sports-backup:latest  
-5. Push the Image to ECR
-docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/sports-backup:latest  
+```sh   
+aws ecr create-repository --repository-name sports-backup
+``` 
+3. Log In to ECR
+```sh 
+aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin
+${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
+```
+5. Build the Docker Image
+```sh
+docker build -t sports-backup .
+``` 
+7. Tag the Image for ECR
+```sh
+docker tag sports-backup:latest ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/sports-backup:latest
+```
+9. Push the Image to ECR
+```sh
+docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/sports-backup:latest
+```
 Step 6: Set Up AWS Resources
 
 1. Register the ECS Task Definition
-aws ecs register-task-definition --cli-input-json file://taskdef.json --region ${AWS_REGION}  
-2. Create a CloudWatch Logs Group
-aws logs create-log-group --log-group-name "${AWS_LOGS_GROUP}" --region ${AWS_REGION}  
-3. Attach the S3/DynamoDB Policy to ECS Task Execution Role
+```sh
+aws ecs register-task-definition --cli-input-json file://taskdef.json --region ${AWS_REGION}
+```
+3. Create a CloudWatch Logs Group
+```sh
+aws logs create-log-group --log-group-name "${AWS_LOGS_GROUP}" --region ${AWS_REGION}
+```  
+5. Attach the S3/DynamoDB Policy to ECS Task Execution Role
+```sh
 aws iam put-role-policy \
   --role-name ecsTaskExecutionRole \
   --policy-name S3DynamoDBAccessPolicy \
-  --policy-document file://s3_dynamodb_policy.json  
-4. Set Up the ECS Events Role
+  --policy-document file://s3_dynamodb_policy.json
+``` 
+7. Set Up the ECS Events Role
 Create the Role with a Trust Policy
-
-aws iam create-role --role-name ecsEventsRole --assume-role-policy-document file://ecsEventsRole-trust.json  
+```sh
+aws iam create-role --role-name ecsEventsRole --assume-role-policy-document file://ecsEventsRole-trust.json
+``` 
 Attach the Events Role Policy
-
-aws iam put-role-policy --role-name ecsEventsRole --policy-name ecsEventsPolicy --policy-document file://ecseventsrole-policy.json  
+```sh
+aws iam put-role-policy --role-name ecsEventsRole --policy-name ecsEventsPolicy --policy-document file://ecseventsrole-policy.json
+```  
 Step 7: Schedule the Task with EventBridge
 
 1. Create the Rule
-aws events put-rule --name SportsBackupScheduleRule --schedule-expression "rate(1 day)" --region ${AWS_REGION}  
-2. Add the Target
-aws events put-targets --rule SportsBackupScheduleRule --targets file://ecsTarget.json --region ${AWS_REGION}  
+```sh
+aws events put-rule --name SportsBackupScheduleRule --schedule-expression "rate(1 day)" --region ${AWS_REGION}
+```  
+3. Add the Target
+```sh
+aws events put-targets --rule SportsBackupScheduleRule --targets file://ecsTarget.json --region ${AWS_REGION}
+``` 
 Step 8: Manually Test the ECS Task
 
 Run this command to manually trigger the task:
-
+```sh
 aws ecs run-task \
   --cluster sports-backup-cluster \
   --launch-type FARGATE \
   --task-definition ${TASK_FAMILY} \
   --network-configuration "awsvpcConfiguration={subnets=[\"${SUBNET_ID}\"],securityGroups=[\"${SECURITY_GROUP_ID}\"],assignPublicIp=\"ENABLED\"}" \
-  --region ${AWS_REGION}  
-Key Takeaways
+  --region ${AWS_REGION}
+```
+Now go back to your DynamoDb table, you will see all of the fetched data for the game highlights!🚀 
+
+Key Takeaways📋
 
 Used templates to generate JSON configuration files
 Integrated DynamoDB for data storage and backup

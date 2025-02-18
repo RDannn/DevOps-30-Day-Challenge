@@ -792,10 +792,14 @@ aws ecr create-repository --repository-name sports-backup
 aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin
 ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com
 ```
+<img width="1440" alt="loginsuccedd" src="https://github.com/user-attachments/assets/d76382ca-5f61-44a4-8ba9-0f57b44be48d" />
+
 5. Build the Docker Image
 ```sh
 docker build -t sports-backup .
-``` 
+```
+<img width="1440" alt="cdresources" src="https://github.com/user-attachments/assets/7cd7b9ff-32ca-4e7c-b266-d57c3ce9d343" />
+
 7. Tag the Image for ECR
 ```sh
 docker tag sports-backup:latest ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/sports-backup:latest
@@ -804,6 +808,8 @@ docker tag sports-backup:latest ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaw
 ```sh
 docker push ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com/sports-backup:latest
 ```
+<img width="1440" alt="dockerpush" src="https://github.com/user-attachments/assets/a25893d3-637e-4407-8761-067158990991" />
+
 Step 6: Set Up AWS Resources
 
 1. Register the ECS Task Definition

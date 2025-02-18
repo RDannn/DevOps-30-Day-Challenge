@@ -1,3 +1,11 @@
+![SPORTSBACKUPdrawio drawio](https://github.com/user-attachments/assets/4ade21e3-1514-42b5-a5ba-ba405e0b4b93)
+
+
+
+
+
+
+
 # SportsDataBackup
 
 
@@ -274,6 +282,9 @@ SUBNET_ID = subnet-xxxxx
 
 SECURITY_GROUP_ID = sg-xxxxx  
 
+<img width="1439" alt="envfile" src="https://github.com/user-attachments/assets/5d9a2fc5-f5cb-4a08-8c57-da2d1fe3475a" />
+
+
 ## Step 2: Get Your Subnet ID & Security Group ID
 
 1️⃣ Go to the GitHub repo 📁 and open the resources folder.
@@ -292,6 +303,9 @@ bash vpc_setup.sh
 
 5️⃣ The output will provide the Subnet ID and Security Group ID—copy & paste these values into your .env file under SUBNET_ID and SECURITY_GROUP_ID.
 
+<img width="1440" alt="bashvpc" src="https://github.com/user-attachments/assets/354f1f9d-4e0a-4493-9eb7-f0d378ce034a" />
+
+
 ## Step 3: Load Your Environment Variables
 
 Run the following command to load your .env file into the terminal:
@@ -300,6 +314,9 @@ set -a
 source .env
 set +a
 ```
+
+<img width="1440" alt="seta" src="https://github.com/user-attachments/assets/868a822c-d70e-4c78-871b-d08412f34519" />
+
 (Optional) Verify that your variables are correctly loaded:
 ```sh
 echo $AWS_LOGS_GROUP
@@ -667,6 +684,13 @@ Python3: Make sure it's installed by running python3 --version.
 Install gettext package - envsubst is a command-line utility is used for environment variable substituition in shell scripts and text files. Install according
 to your operating system/environment.
 
+<img width="1440" alt="gettext" src="https://github.com/user-attachments/assets/6df9cfd7-f772-4ac1-a4a5-47a620eed255" />
+
+
+<img width="1385" alt="brewgettext" src="https://github.com/user-attachments/assets/79f681ab-c8ab-45cd-8b39-9a1a99efe560" />
+
+
+
 
 
 ### Retrieve Your AWS Account ID ☁️🔑 
@@ -729,47 +753,17 @@ Now would be a great time to set up and create our DynamoDB table, right? 🤔 L
 Sign in to the AWS console. In the AWS serach box, type DynamoDB. Click "Create table". Name the table "SportsHighlights". For the "Partition key" input "Id". Leave the rest of 
 the defaults and click "Create table". The table is now all set to go! 
 
+<img width="1440" alt="dynamodb" src="https://github.com/user-attachments/assets/9f1d5fcb-abb1-4a5c-87cf-a636324716a9" />
+
+
 ### Step 2: Create S3 Bucket🪣
 
 We will now need to create the S3 bucket🪣 and its contents. 
 Open the Cloudshell Terminal. Input this code and ensure you make your bucket unique. 'aws s3api create-bucket --bucket <your-alias>newhighlight-final --region us-east-1'. 
 To verify the bucket input command, 'aws s3 ls'. You should see your bucket listed. Let's continue now setting up the rest of this project!
 
-### Step 2: Set Up and Configure the .env File
+<img width="1426" alt="createbucket" src="https://github.com/user-attachments/assets/b8951f25-e877-4587-a415-76c03eb18190" />
 
-Replace the following placeholders with your actual AWS details:
-
-Your-AWS-Account-ID → Run this command to get your account ID:
-
-aws sts get-caller-identity --query "Account" --output text
-Your-RAPIDAPI-Key
-Your-AWS-Access-Key
-Your-AWS-Secret-Access-Key
-S3_BUCKET_NAME → Set this to your alias
-Your-MediaConvert-Endpoint → Retrieve it with:
-aws mediaconvert describe-endpoints
-SUBNET_ID and SECURITY_GROUP_ID:
-To get these values:
-
-Go to the GitHub repo and locate the resources folder. Copy all its contents.
-In AWS CloudShell or your VS Code terminal, create a new file called vpc_setup.sh and paste the provided script inside.
-Run the script:
-bash vpc_setup.sh
-Once executed, you'll see the Subnet_ID and Security_Group_ID values in the output. Copy and paste them into your .env file.
-Step 3: Load Environment Variables
-
-To make sure your environment variables are loaded, run:
-
-set -a  
-source .env  
-set +a  
-Optional: Verify the Variables
-Run the following to check if they were loaded correctly:
-
-echo $AWS_LOGS_GROUP  
-echo $TASK_FAMILY  
-echo $AWS_ACCOUNT_ID  
-Step 4: Generate Final JSON Files
 
 Use envsubst to replace placeholders in your JSON templates:
 

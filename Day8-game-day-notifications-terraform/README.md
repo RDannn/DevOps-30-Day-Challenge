@@ -1,4 +1,4 @@
-# NBA Game Notification System Using AWS
+# NBA Game Notification System Using AWS🏀⛹🏽‍♂️
 
 ## Project Overview
 
@@ -67,12 +67,12 @@ Let’s build something awesome! 🚀🔥
 
 Step 1: Clone the Repository:
 ```sh
-git clone https://github.com/DevOps-30-Day-Challenge.git
+git clone https://github.com/placholder.git
 cd game-day-notifications
 ```
 
 Step 2: Create the Folder
-Run the following command to create the Day8-game-day-notifications-terraform folder:
+Run the following command to create the for example Day8-game-day-notifications-terraform folder:
 ```sh
 mkdir Day8-game-day-notifications-terraform
 ```
@@ -87,7 +87,7 @@ Step 4: Create the Required Files
 Run the following command to create the files:
 ```sh    
 touch .gitignore README.md game_day_notifications.tf nba_notifications.py nba_notifications.zip
-```sh
+```
 
 Step 5: Verify the Files
 Run:
@@ -105,6 +105,9 @@ DevOps-30-Day-Challenge/
     ├── nba_notifications.py                # Main Lambda function code
     ├── nba_notifications.zip               # Main Lambda function zipped file
 ```
+<img width="905" alt="files" src="https://github.com/user-attachments/assets/deff1a5d-9c0c-4584-82e2-2be8db202130" />
+
+
 📂 Copy Files Locally & Push to GitHub
 To copy all files from your repository locally, use the nano function for each file. Save using Ctrl + O, exit with Ctrl + X, and repeat for each file. Then, push everything to your GitHub repository using:
 ```sh
@@ -125,6 +128,9 @@ Instead of storing API keys as Lambda environment variables, we use AWS Systems 
 ```sh
 aws ssm put-parameter --name "nba-api-key" --value "<API_KEY>" --type "SecureString"
 ```
+
+<img width="1427" alt="secureapi" src="https://github.com/user-attachments/assets/a7f7be0a-a38f-48ae-a21a-bf2046521994" />
+
 
 🔑 Replace <API_KEY> with your actual key from SportsData.io. Now, our API key is securely stored! 👏🏾
 
@@ -162,6 +168,9 @@ EventBridge Scheduler – Triggers the Lambda function every 2 hours ⏳
 terraform init
 ```
 
+<img width="1423" alt="terraform init" src="https://github.com/user-attachments/assets/6d72bfd2-4a7a-4ace-b4bb-e92d38ea20e7" />
+
+
 ✅ Sets up the Terraform working directory and backend.
 
 2️⃣ Format Code for Readability
@@ -175,6 +184,9 @@ terraform fmt
 terraform validate
 ```
 
+<img width="1336" alt="terraformvalid" src="https://github.com/user-attachments/assets/7f6d468c-4761-4cef-a665-adde6eb245b2" />
+
+
 ✅ Checks for syntax errors.
 
 4️⃣ Preview Changes
@@ -182,17 +194,30 @@ terraform validate
 terraform plan
 ```
 
+<img width="1439" alt="plan12" src="https://github.com/user-attachments/assets/9af77c05-6d42-4039-bde5-eaf41a8d9955" />
+
+
 ✅ See what Terraform will deploy before applying.
 
 5️⃣ Deploy Infrastructure
 ```sh
 terraform apply
 ```
+
+<img width="1421" alt="applycomplete" src="https://github.com/user-attachments/assets/0bec92c1-b664-424e-af45-e07c90aa4e23" />
+
+
 ✅ Confirms and creates AWS resources in under 15 seconds! 🤯
 
 🎯 Testing in AWS Console
 
 Lambda Function – Search "Lambda" in AWS Console, verify nba_game_alerts is deployed.
+
+<img width="1425" alt="lambdafunct" src="https://github.com/user-attachments/assets/ed68c9ca-884f-406b-b002-5b5a4404d6bf" />
+
+<img width="1433" alt="alert lambda" src="https://github.com/user-attachments/assets/3c323184-9d1b-41dc-94ac-d804c12410d2" />
+
+
 
 SNS Topic Subscription – Subscribe your email:
 
@@ -200,13 +225,22 @@ Go to SNS → Topics → nba_game_alerts → Create Subscription
 
 Enter your email, then confirm in your inbox.
 
+<img width="1005" alt="awsubscription" src="https://github.com/user-attachments/assets/95bb23c6-208e-4cb4-b5aa-d802956990a6" />
+
+
 Manual Lambda Test
 
 In AWS Lambda, create a test event (Test1).
 
 Click Test, and you should get statusCode: 200. 🎉
 
+<img width="1420" alt="status code 200" src="https://github.com/user-attachments/assets/ced93ada-288d-4423-9537-814e15c6a582" />
+
+
 Check your email – NBA game notifications should be there! 🏀
+
+<img width="1022" alt="gameupdateemail" src="https://github.com/user-attachments/assets/2f3cdca8-8170-41ef-8330-5f105667d5e7" />
+
 
 ⏳ Automating Notifications with EventBridge
 
@@ -214,12 +248,18 @@ Go to EventBridge → Rules
 
 Confirm nba_game_alerts_schedule runs every 2 hours! ⛹🏽‍♂️
 
+<img width="1144" alt="eventbridge" src="https://github.com/user-attachments/assets/86f5d938-0663-43ea-bc15-b256567af580" />
+
+
 🗑️ Cleaning Up with Terraform
 
 Instead of manually deleting resources, destroy everything with:
 ```sh
 terraform destroy
 ```
+
+<img width="843" alt="destroycomplete" src="https://github.com/user-attachments/assets/195077fe-f50a-40f2-90fb-706332bbeefd" />
+
 
 ✅ Enter yes to remove all resources.
 

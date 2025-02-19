@@ -16,7 +16,8 @@ This project is an **alert system** that sends real-time **NBA game day score no
 
 Let’s take a look at our architecture diagram for this project:
 
-![alt text](nba.drawio-1.png)
+![nba drawio-1](https://github.com/user-attachments/assets/eadd2ee1-d478-4cc6-88ee-b3bd18bde8ca)
+
 
 For our **Day2-nba-game-day-notifications** project, we designed an event-driven system:
 
@@ -31,15 +32,24 @@ How cool is that?! 😎🆒 Now, let’s dive into the tools and technologies us
 ## Features
 
 ✅ Fetches live **NBA game scores** using an external API.
+
 ✅ Sends **formatted score updates** to subscribers via **SMS/Email** using **Amazon SNS**.
+
 ✅ Uses **Amazon EventBridge** to schedule automatic updates.
+
 ✅ Designed with **IAM security best practices**, ensuring **least privilege access** for all resources.
 
 ## Prerequisites
 
 ✔️ Free account with **subscription & API Key** at [SportsData.io](https://sportsdata.io/)
+
+<img width="1437" alt="sportsio" src="https://github.com/user-attachments/assets/726755ae-a415-42b1-aef3-66d7f7091f26" />
+
+
 ✔️ **AWS account** with basic knowledge of **AWS & Python**
+
 ✔️ **AWS CLI** installed and configured
+
 ✔️ **Terraform CLI (v1.10.5)** installed on your local environment
 
 ## Technologies Used

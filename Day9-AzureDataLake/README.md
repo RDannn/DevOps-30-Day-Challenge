@@ -387,7 +387,7 @@ container_client = blob_service_client.get_container_client(container_name)
 container_client.create_container()  # Creates the container if it doesn’t exist
 blob_client = container_client.get_blob_client(blob_name)
 blob_client.upload_blob(line_delimited_data, overwrite=True)
-```sh
+```
 Creates the storage container (if it doesn’t already exist).
 References the specific blob file (nba_player_data.jsonl).
 Uploads the processed data, overwriting any existing file.

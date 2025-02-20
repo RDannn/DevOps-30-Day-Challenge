@@ -451,6 +451,9 @@ Prerequisites 🔑
 
 Sign up at Sportsdata.io (Free account available!)
 
+<img width="1437" alt="sportsio" src="https://github.com/user-attachments/assets/18a2174b-9a2e-4425-8a3c-680361a06318" />
+
+
 
 Click on Developers → API Resources → Introduction & Testing
 

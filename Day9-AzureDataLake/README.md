@@ -465,13 +465,8 @@ Copy this API key—you’ll need it soon!
 
 ✅ 2. Set up an Azure Account
 
-Azure gives you free credits! Pick the one that applies to you:
+<img width="1438" alt="createazureacc" src="https://github.com/user-attachments/assets/14f197a8-042e-479f-8f94-afa6a1bf3ab2" />
 
-💰 Azure $200 Credit
-
-🎓 Azure for Students
-
-�� Azure for Startups
 
 ✅ 3. Install VS Code Extensions for Azure
 
@@ -490,6 +485,8 @@ brew install python
 python3 -m ensurepip --default-pip
 pip install azure-identity azure-mgmt-resource azure-mgmt-storage azure-mgmt-synapse azure-storage-blob python-dotenv requests
 ```
+<img width="1413" alt="ensurepip" src="https://github.com/user-attachments/assets/3f3bf81c-e2f1-4eb6-bdd2-d094ea9e1055" />
+
 
 Then install all dependencies with:
 ```sh
@@ -510,11 +507,23 @@ Add these credentials:
 
 ✅ Your Azure Subscription ID
 
+<img width="964" alt="azuresubscribe" src="https://github.com/user-attachments/assets/484bbf65-1b3d-43fe-927f-e2fa6c3fb465" />
+
+
 ✅ Unique Azure Resource Group Name
+
+<img width="1240" alt="resourcegroup" src="https://github.com/user-attachments/assets/581bdc97-4761-470b-baf0-4566d6b745b0" />
+
 
 ✅ Unique Storage Account Name
 
+<img width="1252" alt="createstoreaccount" src="https://github.com/user-attachments/assets/ccebef6f-c426-4098-81eb-fa1c8096c8a6" />
+
+
 ✅ Unique Synapse Workspace Name
+
+<img width="1337" alt="synapseworkspace" src="https://github.com/user-attachments/assets/064351f7-2188-4402-978e-6ea23762dabd" />
+
 
 🚫 Leave the Azure Connection String & Synapse SQL Endpoint blank (they’ll be injected automatically)
 
@@ -526,27 +535,40 @@ Run this command to set up the environment:
 python setup_nba_data_lake.py
 ```
 
+<img width="1403" alt="pyset" src="https://github.com/user-attachments/assets/0bacc990-9614-4bc9-9f94-dfd6b6dbb580" />
+
+
+
 Step 4: Check for Your Resources
 🔍 Azure Portal:
 
 Search for your Storage Account
 Under Data Storage, go to Containers
 Look for raw-data/nba_player_data.jsonl
+
+<img width="1433" alt="datalakejson" src="https://github.com/user-attachments/assets/1f522bd0-9bea-428a-ba90-7e5b9174c539" />
+
+
 🔍 Azure CLI:
 Run this to list blobs in your container:
 ```sh
 az storage blob list --container-name nba-datalake --account-name <your_storage_account_name> --query "[].name" --output table
 ```
 
+<img width="1409" alt="jsonputput" src="https://github.com/user-attachments/assets/267bdc4c-29c2-4347-9264-f3c2afd5d0f8" />
+
 Download the file:
 ```sh
 az storage blob download --container-name nba-datalake --account-name <your_storage_account_name> --name raw-data/nba_player_data.jsonl --file nba_player_data.jsonl
 ```
 
+
 View the file:
 ```sh
 cat nba_player_data.jsonl
 ```
+
+<img width="1409" alt="highlights" src="https://github.com/user-attachments/assets/6dd5379d-2398-48c8-9850-265abe95a6c3" />
 
 What We Learned 🎯
 

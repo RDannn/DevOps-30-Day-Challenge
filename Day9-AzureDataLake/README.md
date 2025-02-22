@@ -342,6 +342,7 @@ Retrieves the API key and endpoint from the environment variables:
 ```sh
 api_key = os.getenv("SPORTS_DATA_API_KEY")
 nba_endpoint = os.getenv("NBA_ENDPOINT")
+```
 
 The API key gives us permission to access the Sports Data API.
 The endpoint is the web address we call to get the NBA data.

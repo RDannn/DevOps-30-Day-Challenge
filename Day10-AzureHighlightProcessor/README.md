@@ -1,3 +1,8 @@
+![azurencaa drawio](https://github.com/user-attachments/assets/a18e990e-2cf4-4da9-92ec-de80f13769a5)
+
+
+
+
 # NCAA Highlight Processor Azure! 🏀
 
 We're diving into another Azure project, building an NCAA Highlight Processor! This project will fetch real-time game highlights, process them, and store them within our Azure storage ecosystem.

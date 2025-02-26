@@ -1,5 +1,7 @@
 # NBA Game Notification System Using AWS🏀⛹🏽‍♂️
 
+#DevOpsAllStarsChallenge #DevOpsAllStarChallenge
+
 ## Project Overview
 
 We are back with another great project! 🚀 This project is all about evolution. We are evolving our skillset and toolkit! 🧰 We are going back to the fundamentals, revisiting what we originally learned, and applying something new to build upon that foundation.

@@ -1,4 +1,4 @@
-# Azure Project: NCAA Highlight Processor! 🏀
+# NCAA Highlight Processor Azure! 🏀
 
 We're diving into another Azure project, building an NCAA Highlight Processor! This project will fetch real-time game highlights, process them, and store them within our Azure storage ecosystem.
 

@@ -8,6 +8,8 @@
 
 # NBA DATA LAKE AZURE🏀⛹🏽‍♂️
 
+#DevOpsAllStarsChallenge #DevOpsAllStarChallenge
+
 ## Project Overview
 
 We are back with another great project! 🚀 This will be our first project using Azure! We are using Azure resources to create a sports data lake! We did this similar project in AWS, now we are using Azure! We will grab the NBA data off line and store in the container/blob storage. Let's breakdown our code and see how everything works! 

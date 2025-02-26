@@ -1,17 +1,18 @@
-Azure Project: NCAA Highlight Processor! 🏀
+# Azure Project: NCAA Highlight Processor! 🏀
 
 We're diving into another Azure project, building an NCAA Highlight Processor! This project will fetch real-time game highlights, process them, and store them within our Azure storage ecosystem.
 
-🔍 Overview
+## 🔍 Overview
+
 We start with our Request API, which makes an HTTP request to fetch data from an external API. Remember 💡 an API is an endpoint we interact with to retrieve data stored outside our system. In this case, we’ll pull NCAA game highlights and store the data in an Azure Blob Storage container in JSON format.
 
 JSON files contain structured data such as video URLs, player details, and game stats. We’ll parse these JSON files to extract the specific video URLs we need, download those videos, and store them in Azure Blob Storage under a separate folder path. 📁
 
 Since Azure can be tricky with IAM and access management, we’ll use Microsoft Entra ID (formerly Azure AD) to authenticate and communicate securely with all the services in this project. Now, let's break down the source code and how each part contributes to our project! 👨🏾‍💻
 
-📝 Code Breakdown
+## 📝 Code Breakdown
 
-📌 .env File
+### 📌 .env File
 
 The .env file stores environment variables, so we can manage key configurations in one place without hardcoding values.
 
@@ -35,7 +36,7 @@ Key configurations:
 
 Our script will dynamically inject storage account details into this file, ensuring everything stays up to date. This keeps our workflow automated and scalable.
 
-🏗️ create_storage_account.py
+### 🏗️ create_storage_account.py
 
 This script dynamically creates an Azure Storage Account and updates the .env file with the generated storage account name and primary key.
 
@@ -57,7 +58,7 @@ Fetches and updates the primary storage key
 
 The script ensures that our storage account is ready before any processing begins. This is a critical prerequisite for our project!
 
-⚙️ config.py
+### ⚙️ config.py
 
 This script loads environment variables from the .env file and ensures any updates (such as new storage keys) are reflected immediately.
 
@@ -67,7 +68,7 @@ Key function:
 
 Simple but powerful! 🚀
 
-📡 fetch.py
+### 📡 fetch.py
 
 This script retrieves data from the API and stores it in Azure Blob Storage.
 
@@ -84,7 +85,7 @@ Checks if the container exists; if not, creates it dynamically
 Stores the JSON file under a specific blob path
 If the request fails, the script automatically retries based on the retry settings in .env. This ensures reliability!
 
-🎥 process_one_video.py
+### 🎥 process_one_video.py
 This script downloads video highlights from the API and saves them to Azure Blob Storage.
 
 Key functions:
@@ -96,29 +97,34 @@ Key functions:
 🔹 Download & Upload videos →
 
 Fetches video content
+
 Saves it under a separate path in Azure Blob Storage
 This ensures that our system automatically processes and organizes NCAA highlight videos in the cloud. 🏀
 
-💻 run_all.py 
+### 💻 run_all.py 
 
 This script acts as the main orchestrator, executing all required scripts in the correct sequence to process NCAA basketball highlight videos. It automates storage setup, API data retrieval, and video processing while handling errors and retry logic.
 
 Key Functionalities
 
 Sequential Execution of Scripts
+
 It ensures that all required scripts (create_storage_account.py, fetch.py, and process_one_video.py) run in the correct order.
 Implements subprocess to execute each script independently.
 
 Delay Handling
+
 Introduces delays using time.sleep() between script executions, allowing sufficient time for resources to be created.
 Delay settings are configurable through config.py.
 
 Error Handling & Retry Logic
+
 Initializes an attempt counter (attempts = 0).
 Retries script execution up to three times if errors occur.
 If a script fails after three attempts, an error message is logged, assisting with debugging.
 
 Environment Variable Validation
+
 Ensures that essential configuration variables (like RAPIDAPI_KEY, AZURE_SUBSCRIPTION_ID, etc.) are set correctly.
 If an error occurs due to missing or incorrect environment variables, the script will notify the user.
 
@@ -175,7 +181,7 @@ Setup & Execution
 
 Step 1: Clone the Repository
 ```sh
-git clone https://github.com/alahl1/Azure-30day--DevOps-Challenge/tree/main/Projects/Week2/AzureHighlightProcessor
+git clone https://github.com//YOUR_GITHUB_REPO_PLACEHOLDER
 cd src
 ```
 Step 2: Update the .env File

@@ -192,6 +192,18 @@ AZURE_SUBSCRIPTION_ID=<Your_Azure_Subscription_ID>
 AZURE_RESOURCE_GROUP=<Your_Resource_Group_Name>
 AZURE_BLOB_CONTAINER_NAME=<Your_Container_Name>
 ```
+<img width="1438" alt="rapidapi" src="https://github.com/user-attachments/assets/ef3daff6-c6b3-49c5-891e-16c34ccebb34" />
+
+
+<img width="1415" alt="resource groups" src="https://github.com/user-attachments/assets/02cc1046-3105-4fd4-a013-fb96637aab8f" />
+
+
+<img width="1423" alt="storageaccountname" src="https://github.com/user-attachments/assets/8aba2b71-1184-42fc-a35e-6b1f5e1ca7b6" />
+
+
+<img width="1423" alt="container" src="https://github.com/user-attachments/assets/80bec437-1d65-4b3d-af56-460a670ed074" />
+
+
 Step 3: Secure the .env File
 ```sh
 chmod 600 .env
@@ -207,18 +219,30 @@ Windows:
 python -m venv venv
 venv\Scripts\activate
 ```
+<img width="1430" alt="venv" src="https://github.com/user-attachments/assets/279fa105-c64e-4078-93f5-afa01e7e0d20" />
+
+
 Step 5: Install Dependencies
 ```sh
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
+<img width="1436" alt="pipinstall" src="https://github.com/user-attachments/assets/4f82bd5b-e42a-465a-b39d-c5c0d09a3581" />
+
+
 Step 6: Run the Project
 ```sh
 python run_all.py
 ```
+<img width="1415" alt="runallpy" src="https://github.com/user-attachments/assets/616ffb65-9a77-4797-99a2-d9392a1c8cd0" />
+
+
 Executes create_storage_account.py first.
+
 Waits for the specified delay (e.g., 60 seconds).
+
 Runs fetch.py to fetch API data and upload JSON to Blob Storage.
+
 Runs process_one_video.py to process and upload videos.
 Verification
 
@@ -230,6 +254,28 @@ az storage blob list \
     --query "[].{name:name}" \
     --output table
 ```
+
+<img width="1417" alt="allscriptssucess" src="https://github.com/user-attachments/assets/ff51d2f3-43f4-4d2b-8c06-3a58e3e84a78" />
+
+
+<img width="1408" alt="storageboblast" src="https://github.com/user-attachments/assets/69aaaf5a-c127-4f25-8e66-d17f47e642b7" />
+
+
+<img width="1395" alt="storageblobhighlight" src="https://github.com/user-attachments/assets/1019f599-0b1c-4c6f-8637-fdf650c2df97"
+/>
+
+<img width="1422" alt="firstvideo" src="https://github.com/user-attachments/assets/5e3e2faa-3ee2-4f61-a054-ec21f95fd985" />
+
+
+<img width="1424" alt="containerhighlightvideo" src="https://github.com/user-attachments/assets/ca8415d0-fef2-432d-ab1f-9fca49dcf104" />
+
+
+<img width="1416" alt="containerbasketballvideo" src="https://github.com/user-attachments/assets/46270d3c-41e0-4fc9-bd8f-e162cb74872f" />
+
+
+<img width="1428" alt="firstvideoquicktime" src="https://github.com/user-attachments/assets/de92af6d-b431-4ad3-bdaa-ac1471773daa" />
+
+
 Key Learnings
 
 Microsoft Entra ID (formerly Azure AD) for authentication and access control.

@@ -1,38 +1,41 @@
-Azure Game Highlight Processor with Terraform 🚀
+![terraformazurehighlight drawio](https://github.com/user-attachments/assets/897456d7-1237-4123-b873-9a8ab5afba5c)
 
-Introduction
+
+# Azure Game Highlight Processor with Terraform 🚀
+
+## Introduction
 
 Welcome back for another exciting Azure project! This time, we're focusing on Infrastructure as Code (IaC) and automation to optimize how we manage cloud resources. Instead of manually provisioning our Azure infrastructure, we’ll leverage Terraform, a powerful IaC tool, to automate the entire process.
 
 In our previous project, we built an Azure-based game highlight processor from scratch. This project automates the same infrastructure deployment using Terraform, making our workflow faster, more efficient, and repeatable. Let’s dive in! 🏊🏾‍♀️
 
-Project Overview
+### Project Overview
 
-What We Did Previously
+#### What We Did Previously:
 
-Fetched game data from RapidAPI and formatted it for readability.
+✅ Fetched game data from RapidAPI and formatted it for readability.
 
-Stored the data as a text file in an Azure Blob container.
+✅ Stored the data as a text file in an Azure Blob container.
 
-Downloaded and processed videos from a provided URL, storing them in the same container.
+✅ Downloaded and processed videos from a provided URL, storing them in the same container.
 
-What We Are Doing Now
+#### What We Are Doing Now
 
-We replace manual resource creation with Terraform, automating:
+✅ We replace manual resource creation with Terraform, automating:
 
-Azure Storage Account creation
+✅ Azure Storage Account creation
 
-Blob Container provisioning
+✅ Blob Container provisioning
 
-Environment variable setup
+✅ Environment variable setup
 
 We maintain the same Python scripts from the last project, but remove the need for manual configuration.
 
 update_env.py dynamically retrieves Azure credentials from Terraform outputs and injects them into the .env file.
 
-Terraform Configuration
+## Terraform Configuration
 
-main.tf
+main.tf💻
 
 Acts as the blueprint for our Azure infrastructure.
 
@@ -46,7 +49,7 @@ Blob Container (rooms within the house 📦)
 
 Once deployed, Terraform provisions all necessary cloud resources automatically.
 
-variables.tf
+variables.tf💻
 
 Stores parameterized values for Terraform configurations.
 
@@ -54,7 +57,7 @@ Allows flexibility without modifying core Terraform scripts.
 
 Example: Define storage account name, Azure region, etc.
 
-outputs.tf
+outputs.tf💻
 
 Returns critical information after Terraform deployment, such as:
 
@@ -66,7 +69,7 @@ Blob Container Name
 
 Think of it as a post-construction report, providing the “keys” 🔑 to our infrastructure.
 
-terraform.tfvars
+terraform.tfvars💻
 
 Specifies environment-specific configurations, such as:
 
@@ -98,7 +101,7 @@ Updates .env dynamically with these values.
 
 Ensures all scripts (e.g., fetch.py, process_one_video.py) use the correct credentials automatically.
 
-Project Prerequisites
+## Project Prerequisites
 
 1. RapidAPI Account
 

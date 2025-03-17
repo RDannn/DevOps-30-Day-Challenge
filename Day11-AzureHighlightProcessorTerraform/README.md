@@ -33,7 +33,36 @@ We maintain the same Python scripts from the last project, but remove the need f
 
 update_env.py dynamically retrieves Azure credentials from Terraform outputs and injects them into the .env file.
 
-## Terraform Configuration
+## 🛠 Python Configuration 
+Environment Setup (.env File)
+
+The .env file stores all environment variables, keeping sensitive values like API keys and credentials separate from the script.
+config.py – Centralized Configuration
+
+Loads environment variables from .env using python-dotenv.
+Stores key settings such as API endpoints, RapidAPI Key, and Azure Storage details.
+Dynamically constructs the Azure Storage connection string if one isn’t explicitly provided.
+fetch.py – Fetching Highlights
+
+Calls the RapidAPI Sports API to retrieve basketball highlight data.
+Uses the requests library to send API requests with predefined headers and query parameters.
+Parses the JSON response and uploads the data as a file to Azure Blob Storage.
+process_one_video.py – Processing a Single Video
+
+Downloads the previously stored JSON file from Azure Blob Storage.
+Extracts the first video URL from the JSON content.
+Downloads the video from the extracted URL.
+Uploads the downloaded video back to the Azure Blob Storage container.
+run_all.py – Full Workflow Execution
+
+Manages the complete process, ensuring each step runs sequentially with built-in retry logic.
+update_env.py – Automating .env Updates
+
+Updates the .env file automatically after Terraform provisions resources.
+Runs terraform output -json to fetch details like storage account name, access key, and container name.
+Updates the .env file to ensure Python scripts always use the latest resource configurations.
+
+## 🛠Terraform Configuration
 
 main.tf💻
 
@@ -106,6 +135,11 @@ Ensures all scripts (e.g., fetch.py, process_one_video.py) use the correct crede
 1. RapidAPI Account
 
 Sign up at RapidAPI to access NCAA game highlights.
+
+<img width="1438" alt="rapidapi" src="https://github.com/user-attachments/assets/52dd4a2c-d575-4a71-ac3f-d39b8ceae4f4" />
+
+<img width="1421" alt="sportshighlightrapidapi" src="https://github.com/user-attachments/assets/4ec59552-5ad0-45c4-b975-29a5debfa6da" />
+
 
 Use the Sports Highlights API.
 

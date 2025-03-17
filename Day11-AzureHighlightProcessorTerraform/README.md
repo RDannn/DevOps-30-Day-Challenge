@@ -19,7 +19,7 @@ In our previous project, we built an Azure-based game highlight processor from s
 
 ✅ Downloaded and processed videos from a provided URL, storing them in the same container.
 
-#### What We Are Doing Now
+#### What We Are Doing Now:
 
 ✅ We replace manual resource creation with Terraform, automating:
 
@@ -34,7 +34,8 @@ We maintain the same Python scripts from the last project, but remove the need f
 update_env.py dynamically retrieves Azure credentials from Terraform outputs and injects them into the .env file.
 
 ## 🛠 Python Configuration 
-Environment Setup (.env File)
+
+Environment Setup (.env File)💻
 
 The .env file stores all environment variables, keeping sensitive values like API keys and credentials separate from the script.
 config.py – Centralized Configuration
@@ -42,21 +43,25 @@ config.py – Centralized Configuration
 Loads environment variables from .env using python-dotenv.
 Stores key settings such as API endpoints, RapidAPI Key, and Azure Storage details.
 Dynamically constructs the Azure Storage connection string if one isn’t explicitly provided.
-fetch.py – Fetching Highlights
+
+fetch.py – Fetching Highlights💻
 
 Calls the RapidAPI Sports API to retrieve basketball highlight data.
 Uses the requests library to send API requests with predefined headers and query parameters.
 Parses the JSON response and uploads the data as a file to Azure Blob Storage.
-process_one_video.py – Processing a Single Video
+
+process_one_video.py – Processing a Single Video💻
 
 Downloads the previously stored JSON file from Azure Blob Storage.
 Extracts the first video URL from the JSON content.
 Downloads the video from the extracted URL.
 Uploads the downloaded video back to the Azure Blob Storage container.
-run_all.py – Full Workflow Execution
+
+run_all.py – Full Workflow Execution💻
 
 Manages the complete process, ensuring each step runs sequentially with built-in retry logic.
-update_env.py – Automating .env Updates
+
+update_env.py – Automating .env Updates💻
 
 Updates the .env file automatically after Terraform provisions resources.
 Runs terraform output -json to fetch details like storage account name, access key, and container name.
@@ -138,10 +143,9 @@ Sign up at RapidAPI to access NCAA game highlights.
 
 <img width="1438" alt="rapidapi" src="https://github.com/user-attachments/assets/52dd4a2c-d575-4a71-ac3f-d39b8ceae4f4" />
 
-<img width="1421" alt="sportshighlightrapidapi" src="https://github.com/user-attachments/assets/4ec59552-5ad0-45c4-b975-29a5debfa6da" />
-
-
 Use the Sports Highlights API.
+
+<img width="1421" alt="sportshighlightrapidapi" src="https://github.com/user-attachments/assets/4ec59552-5ad0-45c4-b975-29a5debfa6da" />
 
 2. Install Required Tools
 
@@ -159,6 +163,9 @@ Azure CLI (az login)
 ```sh
 az account show --query id -o tsv
 ```
+<img width="964" alt="azuresubscribe" src="https://github.com/user-attachments/assets/935a120a-376c-4b6c-a4a1-ba1f423f084b" />
+
+
 Use this to configure Terraform.
 
 Project Structure
@@ -200,6 +207,7 @@ python update_env.py
 python run_all.py
 ```
 🎬 How the Script Works:
+
 1️⃣ Run fetch.py – Grabs the latest game highlights from the API and uploads the JSON file to Azure Blob Storage.
 
 2️⃣ Wait for resources to settle – Ensures everything is good to go before moving forward.

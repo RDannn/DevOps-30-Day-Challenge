@@ -2,7 +2,7 @@
 
 import subprocess
 import time
-from config_old import RETRY_COUNT, RETRY_DELAY, WAIT_TIME_BETWEEN_SCRIPTS
+from config import RETRY_COUNT, RETRY_DELAY, WAIT_TIME_BETWEEN_SCRIPTS
 
 def run_script(script_name, retries=RETRY_COUNT, delay=RETRY_DELAY):
     attempt = 0

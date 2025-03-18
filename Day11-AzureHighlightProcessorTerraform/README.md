@@ -243,6 +243,7 @@ cd terraform
 terraform init
 terraform apply -auto-approve
 ```
+Type "yes" when prompted
 
 Terraform will now create all necessary Azure resources.
 

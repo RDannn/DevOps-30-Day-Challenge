@@ -3,6 +3,8 @@
 
 # Azure Game Highlight Processor with Terraform 🚀
 
+#DevOpsAllStarsChallenge #DevOpsAllStarChallenge
+
 ## Introduction
 
 Welcome back for another exciting Azure project! This time, we're focusing on Infrastructure as Code (IaC) and automation to optimize how we manage cloud resources. Instead of manually provisioning our Azure infrastructure, we’ll leverage Terraform, a powerful IaC tool, to automate the entire process.
@@ -310,3 +312,5 @@ Conclusion
 By incorporating Terraform, we eliminate manual infrastructure setup, making our Azure Game Highlight Processor more scalable, repeatable, and efficient. This project showcases the power of Infrastructure as Code—an essential skill for modern cloud engineers! 🚀🔥
 
 Let's keep building! 🧱🚀
+
+#DevOpsAllStarsChallenge #DevOpsAllStarChallenge

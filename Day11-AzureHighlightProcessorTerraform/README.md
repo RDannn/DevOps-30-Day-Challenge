@@ -191,8 +191,52 @@ Step 1: Clone The Repository
 git clone https://github.com/your-repo-name.git
 cd your-repo-name
 ```
+Step 2: Configure Environment Variables
+Update the .env file with the following values:
 
-Step 2: Initialize and Deploy Terraform
+RAPIDAPI_KEY
+
+AZURE_SUBSCRIPTION_ID
+
+AZURE_RESOURCE_GROUP
+
+Step 3: Secure the .env File
+Run the following command to restrict access:
+```sh
+chmod 600 .env
+```
+
+Step 4: Configure Terraform Variables
+Modify the terraform.tfvars file with these details:
+
+subscription_id
+
+resource_group_name
+
+storage_account_name
+
+container_name
+
+Step 5: Set Up a Python Virtual Environment
+macOS/Linux
+```sh
+python3 -m venv venv
+source venv/bin/activate
+```
+Windows
+```sh
+python -m venv venv
+venv\Scripts\activate
+```
+
+Step 6: Install Dependencies
+Ensure you have the latest package manager and install project dependencies:
+```sh
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+Step 7: Initialize and Deploy Terraform
 ```sh
 cd terraform
 terraform init
@@ -201,7 +245,7 @@ terraform apply -auto-approve
 
 Terraform will now create all necessary Azure resources.
 
-Step 3: Run the Python Scripts
+Step 8: Run the Python Scripts
 ```sh
 python update_env.py
 python run_all.py

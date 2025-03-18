@@ -38,7 +38,8 @@ update_env.py dynamically retrieves Azure credentials from Terraform outputs and
 Environment Setup (.env File)💻
 
 The .env file stores all environment variables, keeping sensitive values like API keys and credentials separate from the script.
-config.py – Centralized Configuration
+
+config.py – Centralized Configuration💻
 
 Loads environment variables from .env using python-dotenv.
 Stores key settings such as API endpoints, RapidAPI Key, and Azure Storage details.

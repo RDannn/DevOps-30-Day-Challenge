@@ -166,6 +166,9 @@ az account show --query id -o tsv
 ```
 <img width="964" alt="azuresubscribe" src="https://github.com/user-attachments/assets/935a120a-376c-4b6c-a4a1-ba1f423f084b" />
 
+<img width="892" alt="azaccountshow" src="https://github.com/user-attachments/assets/617d0f8b-a483-4e7b-af16-6e9dd79307c7" />
+
+
 
 Use this to configure Terraform.
 
@@ -218,6 +221,9 @@ storage_account_name
 
 container_name
 
+<img width="1241" alt="terraformtvars" src="https://github.com/user-attachments/assets/8db8e850-083c-4cf8-8985-fb942fec98e8" />
+
+
 Step 5: Set Up a Python Virtual Environment
 macOS/Linux
 ```sh
@@ -241,17 +247,30 @@ Step 7: Initialize and Deploy Terraform
 ```sh
 cd terraform
 terraform init
+terraform plan
 terraform apply -auto-approve
 ```
 Type "yes" when prompted
 
 Terraform will now create all necessary Azure resources.
 
+<img width="752" alt="terraforminit" src="https://github.com/user-attachments/assets/0e53a305-6fa1-448a-8df2-b353897cbaf5" />
+
+
+<img width="1192" alt="tplan" src="https://github.com/user-attachments/assets/97c2c801-745b-47ad-91b5-2e1a1c9c0011" />
+
+<img width="1044" alt="applycomplete" src="https://github.com/user-attachments/assets/4c1717a5-838f-451a-8ba6-475aa56a7477" />
+
+
+
 Step 8: Run the Python Scripts
 ```sh
 python update_env.py
 python run_all.py
 ```
+
+<img width="1164" alt="all scripts successful" src="https://github.com/user-attachments/assets/4cf51bdf-b756-4c98-a31d-5797ff7fc774" />
+
 🎬 How the Script Works:
 
 1️⃣ Run fetch.py – Grabs the latest game highlights from the API and uploads the JSON file to Azure Blob Storage.
@@ -268,6 +287,21 @@ az storage blob list \
     --query "[].{name:name}" \
     --output table
 ```
+
+<img width="786" alt="blobstorage" src="https://github.com/user-attachments/assets/be74483e-da79-4d3e-ac60-565956876480" />
+
+
+<img width="638" alt="highlightsuccess" src="https://github.com/user-attachments/assets/3a53b4c0-b046-4fd1-9e0f-85502b84a64a" />
+
+<img width="1283" alt="containervideo" src="https://github.com/user-attachments/assets/85fa9df2-f429-452c-8601-eaa916c340ab" />
+
+
+<img width="1319" alt="first videoazure" src="https://github.com/user-attachments/assets/9c1186b3-0a7a-477d-b263-19c75721308d" />
+
+<img width="1323" alt="bballhighlihg azure" src="https://github.com/user-attachments/assets/0a159252-9cb8-4679-9f51-2fe950d7941c" />
+
+
+
 
 This ensures environment variables are set and the entire workflow executes seamlessly.
 
